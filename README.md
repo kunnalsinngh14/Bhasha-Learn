@@ -6,6 +6,7 @@
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white" alt="LangChain">
   <img src="https://img.shields.io/badge/ChromaDB-FF6F00?style=flat-square&logo=databricks&logoColor=white" alt="ChromaDB">
 </p>
+
 ## 📌 Summary
 **Revision Room** is an AI-powered revision companion that helps students prepare for exams more efficiently. Instead of manually skimming through hundreds of pages of textbooks or lecture notes again and again for revision, students can simply upload their course PDF, and the AI reads the document, identifies the core concepts, and instantly generates 10 highly relevant, exam-ready practice questions with correct answers and explanations. making revision faster, smarter, and more effective.
 
