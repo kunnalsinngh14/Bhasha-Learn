@@ -1,12 +1,13 @@
 # 📝 Revision Room 
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-Web%20App-lightgrey.svg)
-![LangChain](https://img.shields.io/badge/LangChain-AI-green.svg)
-![ChromaDB](https://img.shields.io/badge/Chroma-VectorDB-orange.svg)
-
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white" alt="LangChain">
+  <img src="https://img.shields.io/badge/ChromaDB-FF6F00?style=flat-square&logo=databricks&logoColor=white" alt="ChromaDB">
+</p>
 ## 📌 Summary
-**Revision Room** is an intelligent, AI-powered study companion designed to help students prepare for their exams efficiently. Instead of manually skimming through hundreds of pages of textbooks or lecture notes, students can simply upload their syllabus or course PDF. The AI reads the document, identifies the core concepts, and instantly generates **10 highly relevant, exam-ready practice questions** with correct answers and explanations.
+**Revision Room** is an AI-powered revision companion that helps students prepare for exams more efficiently. Instead of manually skimming through hundreds of pages of textbooks or lecture notes again and again for revision, students can simply upload their course PDF, and the AI reads the document, identifies the core concepts, and instantly generates 10 highly relevant, exam-ready practice questions with correct answers and explanations. making revision faster, smarter, and more effective.
 
 ## 🎯 Problem Statement
 Students often struggle with "information overload" when preparing for exams. They spend hours reading dense PDFs without knowing what topics are actually important or how they will be tested on them. Traditional study methods lack active recall testing. **Revision Room** solves this by using Retrieval-Augmented Generation (RAG) to instantly transform static reading materials into an active, question-based learning experience.

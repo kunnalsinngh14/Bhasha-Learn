@@ -13,6 +13,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 load_dotenv()
@@ -22,22 +23,11 @@ os.makedirs('uploads', exist_ok=True)
 
 llm = init_chat_model("mistral-small-2603")
 
-# Embeddings&DB
+# Embeddings
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-vectordb = Chroma(
-    persist_directory="./chroma_langchain_db", 
-    embedding_function=embeddings,
-)
 
-# Retriver
-retriever = vectordb.as_retriever(
-    search_type = "mmr",
-    search_kwargs = {
-        "k" : 4,
-        "fetch_k":10,
-        "lambda_mult" :0.5
-    }
-)
+# We will initialize the retriever dynamically when a user uploads a file!
+global_retriever = None
 
 #templates
 template =  ChatPromptTemplate.from_messages([
@@ -87,6 +77,20 @@ def home_page():
         
         data = PyPDFLoader(temp_path)
         docs = data.load()
+        
+
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+        chunks = text_splitter.split_documents(docs)
+        
+        # 2. Create a temporary in-memory vector database just for this PDF!
+        global global_retriever
+        vectordb = Chroma.from_documents(documents=chunks, embedding=embeddings)
+        
+        # 3. Save the retriever globally so the /chat route can use it
+        global_retriever = vectordb.as_retriever(
+            search_type="mmr",
+            search_kwargs={"k": 4, "fetch_k": 10, "lambda_mult": 0.5}
+        )
 
         prompt = template.invoke({
             "pdf": docs
@@ -105,7 +109,11 @@ def chat_api():
     if not query:
         return "Please provide a query."
         
-    docs = retriever.invoke(query)
+    global global_retriever
+    if not global_retriever:
+        return "Error: Please upload a PDF first before asking questions."
+        
+    docs = global_retriever.invoke(query)
     context_list = [doc.page_content for doc in docs]
     
     response = llm.invoke(f""" 
