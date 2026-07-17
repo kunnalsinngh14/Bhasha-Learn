@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision Room - Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8FAFC;
+            --surface-color: #FFFFFF;
+            --primary: #0EA5E9; /* Light Blue */
+            --primary-hover: #0284C7;
+            --accent: #10B981; /* Light Green */
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --border-color: #E2E8F0;
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+        }
+
+        .back-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .back-btn:hover { 
+            background: #F1F5F9; 
+            border-color: #CBD5E1;
+        }
+
+        .content-box {
+            background: var(--surface-color);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        /* Markdown Styles */
+        .content-box h1, .content-box h2, .content-box h3 {
+            color: var(--text-main);
+            margin: 2.5rem 0 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .content-box h1 { font-size: 2.2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 0; color: var(--text-main); }
+        .content-box h2 { font-size: 1.8rem; color: var(--primary); }
+        .content-box h3 { font-size: 1.3rem; }
+        .content-box p { margin-bottom: 1.5rem; }
+        .content-box ul, .content-box ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .content-box li { margin-bottom: 0.5rem; }
+        .content-box strong { color: var(--text-main); font-weight: 600; }
+
+        /* Chat Section */
+        .chat-container {
+            background: var(--surface-color);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: #F8FAFC;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-main);
+        }
+
+        #chat-history {
+            padding: 2rem;
+            max-height: 500px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .message { max-width: 80%; padding: 1rem 1.5rem; border-radius: 16px; line-height: 1.6; font-size: 0.95rem; }
+        .message.user { 
+            align-self: flex-end; 
+            background: var(--primary); 
+            color: white; 
+            font-weight: 500; 
+            border-bottom-right-radius: 4px; 
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.1);
+        }
+        .message.ai { 
+            align-self: flex-start; 
+            background: #F1F5F9; 
+            color: var(--text-main);
+            border: 1px solid var(--border-color); 
+            border-bottom-left-radius: 4px; 
+        }
+        .message.ai strong { color: var(--primary); }
+
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            background: #FFFFFF;
+            display: flex;
+            gap: 1rem;
+        }
+
+        #query-input {
+            flex-grow: 1;
+            background: #F8FAFC;
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        #query-input:focus { 
+            border-color: var(--primary); 
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .send-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="brand-icon">📝</div>
+                <h1 style="font-size: 1.5rem; margin: 0; color: var(--text-main);">Revision Room</h1>
+            </div>
+            <a href="/" class="back-btn">← Start Over</a>
+        </div>
+
+        {% if summary %}
+            <div class="content-box">
+                {{ summary | safe }}
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span style="font-size: 1.2rem;">💬</span> Got a question about the exam?
+                </div>
+                <div id="chat-history">
+                    <div class="message ai">
+                        Hi! I just generated your exam practice questions. Do you want me to explain any of the answers in more detail?
+                    </div>
+                </div>
+                <form class="chat-input-area" id="chat-form">
+                    <input type="text" id="query-input" placeholder="Ask anything..." autocomplete="off" required>
+                    <button type="submit" class="send-btn">Send</button>
+                </form>
+            </div>
+
+            <script>
+                document.getElementById('chat-form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const input = document.getElementById('query-input');
+                    const query = input.value;
+                    const history = document.getElementById('chat-history');
+                    
+                    // User Message
+                    history.innerHTML += `<div class="message user">${query}</div>`;
+                    input.value = '';
+                    
+                    // Loading State
+                    const loadingId = 'loading-' + Date.now();
+                    history.innerHTML += `<div class="message ai" id="${loadingId}"><span style="color: var(--text-muted);">Thinking...</span></div>`;
+                    history.scrollTop = history.scrollHeight;
+                    
+                    // Fetch from Flask
+                    const formData = new FormData();
+                    formData.append('query', query);
+                    
+                    const response = await fetch('/chat', { method: 'POST', body: formData });
+                    const resultHtml = await response.text();
+                    
+                    // Update Loading with Answer
+                    document.getElementById(loadingId).innerHTML = resultHtml;
+                    history.scrollTop = history.scrollHeight;
+                });
+            </script>
+        {% else %}
+            <div class="content-box" style="text-align: center;">
+                No questions generated. Please upload a PDF first.
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
