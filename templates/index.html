@@ -150,19 +150,57 @@
 
     <div class="container">
         <div class="brand">
-            <div class="brand-icon">📝</div>
-            <h1>Revision Room</h1>
+            <div class="brand-icon">🧠</div>
+            <h1>RecallAI</h1>
         </div>
-        <p class="subtitle">Upload your PDF to begin.</p>
+        <p class="subtitle">Upload study material (PDF, PPT, DOCX, TXT, MD) &amp; choose your output language.</p>
+
+        <!-- Visual callout: Document language ≠ Output language -->
+        <div style="display:flex; gap:0.75rem; margin-bottom:2rem; text-align:left;">
+            <div style="flex:1; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:1rem;">
+                <div style="font-size:1.3rem; margin-bottom:0.3rem;">📁</div>
+                <div style="font-weight:600; color:#1E40AF; font-size:0.9rem;">Document Language</div>
+                <div style="color:#3B82F6; font-size:0.82rem;">Any language or format — doesn't affect output</div>
+            </div>
+            <div style="display:flex; align-items:center; color:#94A3B8; font-size:1.2rem; font-weight:700;">→</div>
+            <div style="flex:1; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:1rem;">
+                <div style="font-size:1.3rem; margin-bottom:0.3rem;">🌐</div>
+                <div style="font-weight:600; color:#166534; font-size:0.9rem;">Output Language</div>
+                <div style="color:#16A34A; font-size:0.82rem;">You choose — controls all AI responses</div>
+            </div>
+        </div>
 
         <form action="/" method="POST" enctype="multipart/form-data" id="uploadForm">
             {{ form.hidden_tag() }}
+
+            <div style="text-align: left; margin-bottom: 1.5rem;">
+                <label for="target_language" style="display: block; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">
+                    🌐 Output Language
+                </label>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+                    All notes, questions, explanations, and chat responses will be generated in this language — regardless of the document's original language.
+                </p>
+                {{ form.target_language(class="form-control", id="target_language", style="width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--surface-color); color: var(--text-main); font-size: 1rem;") }}
+            </div>
+
+            {% if form.target_language.errors %}
+                <ul class="error-message">
+                {% for error in form.target_language.errors %}
+                    <li>⚠ {{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
             
+            <div style="text-align: left; margin-bottom: 0.5rem;">
+                <label style="display: block; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">
+                    📁 Upload Study Material
+                </label>
+            </div>
             <div class="upload-area">
-                <div class="upload-icon">📄</div>
-                <h3 style="color: var(--text-main); margin-bottom: 0.5rem;" id="fileName">Drag & Drop or Click</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Supports .PDF format</p>
-                {{ form.file(class="form-control", id="fileInput", onchange="document.getElementById('fileName').innerText = this.files[0].name") }}
+                <div class="upload-icon">📁</div>
+                <h3 style="color: var(--text-main); margin-bottom: 0.5rem;" id="fileName">Drag &amp; Drop or Click</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Supports PDF, PPTX, DOCX, TXT, MD</p>
+                {{ form.file(class="form-control", id="fileInput", accept=".pdf,.pptx,.ppt,.docx,.doc,.txt,.md", onchange="document.getElementById('fileName').innerText = this.files[0] ? this.files[0].name : 'Drag & Drop or Click'") }}
             </div>
             
             {% if form.file.errors %}
@@ -174,10 +212,13 @@
             {% endif %}
 
             <div id="loading" style="display: none; color: var(--accent); margin-bottom: 1rem; font-weight: 600;">
-                Processing ...
+                ⏳ Analysing your document, preparing study notes &amp; generating practice questions — this may take 20–40 seconds…
             </div>
             
-            {{ form.submit(class="submit-btn", value="Generate Questions", onclick="document.getElementById('loading').style.display='block'") }}
+            <button type="submit" class="submit-btn" id="submitBtn"
+                onclick="this.disabled=true; this.innerText='Generating Notes &amp; Questions…'; document.getElementById('loading').style.display='block'; this.closest('form').submit();">
+                Generate Study Notes &amp; Questions
+            </button>
         </form>
     </div>
 

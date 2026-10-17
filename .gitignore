@@ -6,3 +6,19 @@ venv/
 
 # uploaded pdfs
 uploads/
+
+# vector database files (auto-generated, should not be committed)
+chroma_langchain_db/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# llm md
+copilot-instructions.md

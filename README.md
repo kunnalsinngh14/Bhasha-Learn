@@ -1,97 +1,154 @@
-# 📝 Revision Room 
+# 🧠 RecallAI — Multilingual Study & Revision Assistant
 
 <p>
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" alt="Flask">
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white" alt="LangChain">
   <img src="https://img.shields.io/badge/ChromaDB-FF6F00?style=flat-square&logo=databricks&logoColor=white" alt="ChromaDB">
+  <img src="https://img.shields.io/badge/Google%20Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" alt="Google Gemini">
 </p>
 
 ## 📌 Summary
-**Revision Room** is an AI-powered revision companion that helps students prepare for exams more efficiently. Instead of manually skimming through hundreds of pages of textbooks or lecture notes again and again for revision, students can simply upload their course PDF, and the AI reads the document, identifies the core concepts, and instantly generates 10 highly relevant, exam-ready practice questions with correct answers and explanations. making revision faster, smarter, and more effective.
+
+**RecallAI** is an AI-powered, multilingual revision companion. Upload any study PDF — in any language — and the AI reads it, identifies the core concepts, and instantly generates 10 exam-ready practice questions **in the language of your choice**. A built-in RAG chatbot lets you ask follow-up questions about the document, all in your selected output language.
+
+> **PDF language and output language are completely independent.** English PDF → Hindi output. German PDF → Russian output. Any combination works.
 
 ## 🎯 Problem Statement
-Students often struggle with "information overload" when preparing for exams. They spend hours reading dense PDFs without knowing what topics are actually important or how they will be tested on them. Traditional study methods lack active recall testing. **Revision Room** solves this by using Retrieval-Augmented Generation (RAG) to instantly transform static reading materials into an active, question-based learning experience.
+
+Students often struggle with "information overload" when preparing for exams, and face an extra barrier when studying materials in a foreign language. **RecallAI** solves both problems using a multilingual RAG pipeline: the PDF is the source of truth; the LLM generates every response in the student's chosen language.
 
 ## ✨ Key Features
-- **Seamless PDF Upload**: A beautifully designed, drag-and-drop web interface to upload course materials.
-- **Smart Chunking & Vectorization**: Automatically splits large PDFs into manageable chunks and stores them mathematically in a local vector database.
-- **Automated Exam Generation**: AI agent strictly analyzes your document to generate 10 challenging, conceptual exam questions along with answers.
-- **Interactive Chat Interface**: Ask follow-up questions! If an exam answer is confusing, you can use the built-in RAG chatbot to ask the AI to explain specific parts of the PDF in more detail.
-- **Premium UI/UX**: Built with a "Light Glassmorphism" aesthetic for a distraction-free, highly professional study environment.
+
+- **🌐 Multilingual Output**: Choose English, Hindi, Sanskrit, German, or Russian as your output language. Adding new languages requires a single dictionary entry.
+- **📄 Seamless PDF Upload**: Drag-and-drop web interface. Any text-based PDF in any language.
+- **🔍 Smart RAG Pipeline**: ChromaDB + MMR retrieval + HuggingFace embeddings — the document is your single source of truth.
+- **📝 Exam Question Generation**: 10 conceptual, exam-oriented questions with answers and explanations, all in the selected language.
+- **💬 Multilingual RAG Chatbot**: Ask follow-up questions; the bot always replies in your selected language regardless of how you phrase the question.
+- **🕉️ Sanskrit Support**: Proper Devanagari output — not a transliteration of Hindi.
+- **🛡️ Graceful Error Handling**: No stack traces exposed; localized error messages in your selected language.
 
 ## 🛠️ Tech Stack
+
 **Frontend:**
 - HTML5 / CSS3 / JavaScript (Vanilla)
-- Jinja2 (Templating)
+- Jinja2 templating
 - Custom Light Glassmorphism UI (Inter Font)
 
 **Backend:**
-- **Flask**: Web server and routing.
-- **Flask-WTF**: Secure file uploading and form validation.
+- **Flask** — web server and routing
+- **Flask-WTF** — secure file uploading and form validation
+- **Gunicorn** — production WSGI server
 
 **AI & Machine Learning (RAG Pipeline):**
-- **LangChain**: Orchestration framework for LLM chaining.
-- **Mistral (via LangChain Chat Models)**: The core Large Language Model that acts as the expert examiner.
-- **ChromaDB**: The local Vector Database used to store document embeddings.
-- **HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)**: Open-source embedding model to convert text into searchable vectors.
-- **PyPDF**: Extracts raw text from uploaded PDF files.
+- **LangChain** — orchestration framework
+- **Google Gemini (`gemini-2.5-flash`)** — core LLM via `langchain-google-genai`
+- **ChromaDB** — in-memory vector database (per-session, no persistence required)
+- **HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)** — embedding model
+- **PyPDF** — text extraction from PDF files
 
 ## 📁 Project Structure
+
 ```text
-RevisionRoom/
+RecallAI/
 │
-├── uploads/                     # Temporary storage for uploaded user PDFs
-├── chroma_langchain_db/         # Local Vector Database storage
+├── uploads/                  # Temporary storage for uploaded PDFs (gitignored)
 │
-├── templates/                   # Frontend UI
-│   ├── index.html               # The Drag & Drop upload homepage
-│   └── result.html              # The Exam Questions display and Chat UI
+├── templates/
+│   ├── index.html            # Upload page with language selector
+│   ├── result.html           # Exam questions + RAG chatbot UI
+│   └── error.html            # Graceful error page
 │
-├── main.py                      # Main Flask server and LangChain AI Pipeline
-├── DBcreation.py                # Standalone script for PDF Chunking & Vector Embedding
-├── requirement.txt              # Complete list of PIP dependencies
-└── .env                         # Environment variables (API Keys, Secret Keys)
+├── main.py                   # Flask server + LangChain RAG pipeline
+├── requirements.txt          # All pip dependencies
+├── Procfile                  # Gunicorn entry point (Render / Heroku)
+├── runtime.txt               # Pinned Python version
+├── .env.example              # Template for required environment variables
+└── .gitignore
 ```
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Local)
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/RevisionRoom.git
-cd RevisionRoom
+git clone https://github.com/yourusername/RecallAI.git
+cd RecallAI
 ```
 
-### 2. Install Dependencies
-Make sure you have Python 3.10+ installed. Install the required libraries using pip:
+### 2. Create a Virtual Environment
+
 ```bash
-pip install -r requirement.txt
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS / Linux
+source venv/bin/activate
 ```
 
-### 3. Setup Environment Variables
-Create a `.env` file in the root directory and add your API keys:
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set Up Environment Variables
+
+Copy `.env.example` to `.env` and fill in your keys:
+
+```bash
+cp .env.example .env
+```
+
 ```env
 SECRET_KEY=your_flask_secret_key_here
-# Add your specific LLM provider API keys here (e.g., OPENAI_API_KEY, MISTRAL_API_KEY, etc.)
+MISTRAL_API_KEY=your_mistral_api_key_here
 ```
 
-### 4. Run the Application
-Start the Flask web server:
+Get your Mistral API key at [console.mistral.ai](https://console.mistral.ai/).
+
+### 5. Run the Application
+
 ```bash
 python main.py
 ```
 
-### 5. Start Studying
-Open your browser and navigate to:
-```text
-http://127.0.0.1:5000/
-```
-Upload your first PDF and let the AI generate your practice exam!
-# 🤝 Contributing
+Open `http://127.0.0.1:5000/` in your browser.
 
-Contributions, suggestions, and feature requests are welcome.
+---
 
-Feel free to fork the repository, open issues, and submit pull requests to improve Revision Room.
+## ☁️ Deploying to Render
+
+1. Push your repository to GitHub (ensure `.env` is **not** committed).
+2. Create a new **Web Service** on [Render](https://render.com/).
+3. Set **Build Command**: `pip install -r requirements.txt`
+4. Set **Start Command**: `gunicorn main:app`
+5. Add the following **Environment Variables** in the Render dashboard:
+   - `SECRET_KEY` — a long random string
+   - `MISTRAL_API_KEY` — your Mistral API key
+   - `FLASK_DEBUG` — `0`
+
+> **Note on ChromaDB**: The app uses an **in-memory** Chroma instance per session, so no persistent database directory is needed on the server. Each PDF upload creates a fresh vector store for that session.
+
+---
+
+## 🌐 Supported Output Languages
+
+| Code | Language  | Not-found fallback |
+|------|-----------|--------------------|
+| `en` | English   | "I could not find the answer in the document." |
+| `hi` | Hindi     | "मुझे दस्तावेज़ में इसका उत्तर नहीं मिला।" |
+| `sa` | Sanskrit  | "अस्मिन् दस्तावेजे उत्तरं न प्राप्तम्।" |
+| `de` | German    | "Ich konnte die Antwort im Dokument nicht finden." |
+| `ru` | Russian   | "Я не смог найти ответ в документе." |
+
+Adding a new language requires only a new entry in the `SUPPORTED_LANGUAGES` dict in `main.py`.
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and feature requests are welcome. Feel free to fork the repository, open issues, and submit pull requests.
 
 ---
 
