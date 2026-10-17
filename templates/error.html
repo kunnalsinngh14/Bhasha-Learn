@@ -1,87 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecallAI — Error</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #F8FAFC;
-            --surface-color: #FFFFFF;
-            --primary: #0EA5E9;
-            --accent: #10B981;
-            --danger: #EF4444;
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --border-color: #E2E8F0;
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    <title>RecallAI — Ingestion Diagnostic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0f172a',
+                        slateboard: '#1e293b',
+                        muted: '#64748b',
+                        subtle: '#94a3b8',
+                        canvas: '#f8fafc',
+                        surface: '#ffffff',
+                        borderline: '#e2e8f0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-        body {
-            background-color: var(--bg-color);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-
-        .card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 3.5rem;
-            max-width: 520px;
-            width: 100%;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-        }
-
-        .icon { font-size: 3rem; margin-bottom: 1.5rem; }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            text-decoration: none;
-            padding: 0.9rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="card">
-        <div class="icon">⚠️</div>
-        <h1>Something went wrong</h1>
-        <p>{{ message }}</p>
-        <a href="/" class="btn">← Try Again</a>
-    </div>
+<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="w-full bg-surface border-b border-borderline px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0">
+        <a href="/" class="flex items-center space-x-3 text-ink text-decoration-none">
+            <span class="font-serif text-2xl font-semibold tracking-tight text-ink">Recall<span class="font-sans font-light text-muted">/AI</span></span>
+        </a>
+        <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-borderline hover:border-ink bg-surface text-ink text-xs font-medium transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            <span>Return to Workspace</span>
+        </a>
+    </header>
+
+    <!-- DIAGNOSTIC CONTAINER (NOT A FLOATING CENTERED BOX) -->
+    <main class="flex-1 max-w-3xl w-full mx-auto p-6 lg:p-12 space-y-6">
+        <div class="bg-surface border border-borderline rounded-lg p-8 lg:p-10 space-y-6 shadow-xs">
+            
+            <div class="flex items-center gap-3 border-b border-borderline pb-5">
+                <div class="w-10 h-10 rounded bg-red-50 border border-red-200 text-red-700 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                </div>
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">Diagnostic Report</span>
+                    <h1 class="font-serif text-xl font-medium tracking-tight text-ink">
+                        Execution Notice
+                    </h1>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-borderline rounded p-4 text-xs font-mono text-slate-800 leading-relaxed break-words">
+                {{ message }}
+            </div>
+
+            <div class="space-y-2 text-xs text-muted">
+                <p class="font-semibold text-ink">Suggested Remediation:</p>
+                <ul class="list-disc list-inside space-y-1 pl-1">
+                    <li>Verify that the uploaded document contains readable text layers rather than scanned bitmaps.</li>
+                    <li>If uploading legacy PowerPoint (.ppt) or Word (.doc) files, convert to modern (.pptx/.docx) or .pdf.</li>
+                    <li>Confirm that your API key is correctly configured and has active quota.</li>
+                </ul>
+            </div>
+
+            <div class="pt-4 border-t border-borderline flex items-center gap-3">
+                <a href="/" class="h-10 px-5 rounded-full bg-ink hover:bg-slateboard text-white text-xs font-medium inline-flex items-center gap-2 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    <span>Retry Ingestion</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-surface border-t border-borderline px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-muted z-20 shrink-0">
+        <div>RecallAI Diagnostic Log</div>
+        <div>© 2026 RecallAI</div>
+    </footer>
+
 </body>
 </html>

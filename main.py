@@ -379,16 +379,18 @@ def home_page():
             })
             response = get_llm().invoke(prompt)
             result_html = markdown.markdown(response.content, extensions=["tables", "fenced_code"])
-
         except Exception as exc:
             logger.exception("Error during study generation: %s", exc)
             return render_template("error.html", message=_format_user_error(exc, language_details["error_generation"]))
+
+        session["uploaded_filename"] = filename
 
         return render_template(
             "result.html",
             summary=result_html,
             target_language=language_details["name"],
             chat_greeting=language_details["chat_greeting"],
+            filename=filename,
         )
 
     return render_template("index.html", form=form)
