@@ -55,7 +55,6 @@ def get_llm():
         _cached_llm_config = current_config
     return _llm
 
-
 def get_embeddings():
     """Lazily load HuggingFace embeddings on first use."""
     global _embeddings
