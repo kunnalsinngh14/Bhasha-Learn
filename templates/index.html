@@ -13,18 +13,20 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: '#0f172a',
-                        slateboard: '#1e293b',
-                        muted: '#64748b',
-                        subtle: '#94a3b8',
-                        canvas: '#f8fafc',
-                        surface: '#ffffff',
-                        borderline: '#e2e8f0',
-                        borderlineDark: '#cbd5e1',
-                        ochre: '#b45309',
-                        ochreLight: '#fef3c7',
-                        emeraldMuted: '#047857',
-                        emeraldLight: '#ecfdf5',
+                        navyDeep: '#0f172a',
+                        navyPanel: '#1e293b',
+                        warmSlate: '#f1f5f9',
+                        ochrePrimary: '#b45309',
+                        ochreBg: '#fffbeb',
+                        ochreBorder: '#fde68a',
+                        terracottaPrimary: '#c2410c',
+                        terracottaHover: '#9a3412',
+                        forestPrimary: '#065f46',
+                        forestBg: '#f0fdf4',
+                        forestBorder: '#bbf7d0',
+                        azurePrimary: '#1d4ed8',
+                        azureBg: '#eff6ff',
+                        azureBorder: '#bfdbfe',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -35,41 +37,33 @@
             }
         }
     </script>
-    <style>
-        .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-    </style>
 </head>
-<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-warmSlate text-slate-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION BAR -->
-    <header class="w-full bg-surface border-b border-borderline px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0">
+    <!-- TOP NAVIGATION BAR (DEEP NAVY WITH AMBER ACCENTS) -->
+    <header class="w-full bg-[#0f172a] border-b border-slate-800 px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0 text-white">
         <div class="flex items-center space-x-6">
-            <a href="/" class="flex items-center space-x-3 text-ink text-decoration-none">
-                <span class="font-serif text-2xl font-semibold tracking-tight text-ink">Recall<span class="font-sans font-light text-muted">/AI</span></span>
-                <span class="hidden md:inline-flex text-xs font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-borderline">v2.5 Flash</span>
+            <a href="/" class="flex items-center space-x-3 text-white text-decoration-none">
+                <span class="font-serif text-2xl font-semibold tracking-tight text-white">Recall<span class="font-sans font-medium text-amber-400">/AI</span></span>
+                <span class="hidden md:inline-flex text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">Gemini 2.5 Flash</span>
             </a>
-            <span class="hidden sm:inline text-xs font-medium text-muted border-l border-borderline pl-4">
-                Academic &amp; Cross-Lingual Study Assistant
+            <span class="hidden sm:inline text-xs font-medium text-slate-300 border-l border-slate-700 pl-4">
+                Multilingual Study &amp; Exam Preparation Assistant
             </span>
         </div>
         <div class="flex items-center space-x-4">
-            <div class="hidden lg:flex items-center space-x-2 text-xs font-mono text-muted">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emeraldLight text-emeraldMuted border border-emerald-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                    <span>In-Memory Session Isolated</span>
+            <div class="hidden lg:flex items-center space-x-2 text-xs font-mono">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Air-Gapped In-Memory Vector Store</span>
                 </span>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-borderline">
-                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-                    <span>5 Languages</span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-950/80 text-blue-300 border border-blue-700/60">
+                    <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                    <span>5 Languages Supported</span>
                 </span>
             </div>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-muted hover:text-ink transition-colors flex items-center gap-1">
-                <span>Documentation</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </a>
+            <div class="h-4 w-px bg-slate-700"></div>
+            <span class="text-xs font-mono text-slate-300">v4.2</span>
         </div>
     </header>
 
@@ -77,23 +71,23 @@
     <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
         <!-- LEFT WORKSPACE COLUMN: INGESTION & CONFIGURATION -->
-        <section class="lg:col-span-6 bg-surface border border-borderline rounded-lg p-6 lg:p-8 space-y-6">
-            <div>
-                <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">Step 1 of 2 · Configuration</span>
-                <h1 class="font-serif text-2xl lg:text-3xl font-medium tracking-tight text-ink mt-1">
+        <section class="lg:col-span-6 bg-white border border-slate-300/80 rounded-xl p-6 lg:p-8 space-y-6 shadow-sm">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold">Step 1 of 2 · Ingestion &amp; Language</span>
+                <h1 class="font-serif text-2xl lg:text-3xl font-medium tracking-tight text-slate-900 mt-1">
                     Study Material Ingestion
                 </h1>
-                <p class="text-sm text-muted mt-1 leading-relaxed">
-                    Upload course notes, slides, research papers, or syllabus documents. Material can be in any source language.
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Upload documents in any language. The AI pipeline analyzes source chunks and synthesizes notes and questions in your chosen target language.
                 </p>
             </div>
 
-            <!-- GLOBAL FORM ERROR ALERT -->
+            <!-- FORM ERROR ALERT -->
             {% if form.errors %}
                 <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded text-sm text-red-800 space-y-1">
                     <div class="font-semibold flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        <span>Please resolve the following before continuing:</span>
+                        <span>Please resolve the following:</span>
                     </div>
                     <ul class="list-disc list-inside text-xs space-y-1 pl-2">
                         {% for field, errors in form.errors.items() %}
@@ -108,13 +102,13 @@
             <form action="/" method="POST" enctype="multipart/form-data" id="uploadForm" class="space-y-6">
                 {{ form.hidden_tag() }}
 
-                <!-- 1. TARGET SYNTHESIS LANGUAGE SELECTOR -->
+                <!-- 1. TARGET SYNTHESIS LANGUAGE SELECTOR (WITH RICH DISTINCT COLORS) -->
                 <div class="space-y-2">
                     <div class="flex items-center justify-between">
-                        <label for="target_language" class="text-xs font-mono font-semibold uppercase tracking-wider text-ink">
+                        <label for="target_language" class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-900">
                             Target Synthesis Language
                         </label>
-                        <span class="text-xs text-muted">All notes &amp; Q&amp;A generated here</span>
+                        <span class="text-xs text-slate-500">Decoupled from source language</span>
                     </div>
 
                     <!-- Hidden native select for form submission -->
@@ -122,237 +116,279 @@
                         {{ form.target_language(id="target_language") }}
                     </div>
 
-                    <!-- Interactive Language Grid -->
+                    <!-- Interactive Colorful Language Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="langSelectorGrid">
-                        <button type="button" data-lang="en" class="lang-pill flex items-center justify-between p-3 rounded border text-left transition-all border-ink bg-slate-900 text-white">
+                        
+                        <!-- EN: Deep Navy -->
+                        <button type="button" data-lang="en" 
+                            data-active-class="bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-sm"
+                            data-inactive-class="bg-blue-50/60 text-slate-800 border-blue-200 hover:bg-blue-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-sm">
                             <div>
-                                <div class="text-xs font-mono uppercase tracking-wider text-slate-300">EN · English</div>
-                                <div class="text-sm font-medium">Standard Academic</div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-blue-200">EN · English</div>
+                                <div class="text-xs font-medium mt-0.5">Standard Academic</div>
                             </div>
-                            <svg class="check-icon w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="check-icon w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </button>
 
-                        <button type="button" data-lang="hi" class="lang-pill flex items-center justify-between p-3 rounded border text-left transition-all border-borderline bg-surface text-ink hover:bg-slate-50">
+                        <!-- HI: Warm Terracotta -->
+                        <button type="button" data-lang="hi"
+                            data-active-class="bg-[#c2410c] text-white border-[#c2410c] shadow-sm"
+                            data-inactive-class="bg-orange-50/60 text-slate-800 border-orange-200 hover:bg-orange-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-orange-50/60 text-slate-800 border-orange-200 hover:bg-orange-100/60">
                             <div>
-                                <div class="text-xs font-mono uppercase tracking-wider text-muted">HI · हिन्दी</div>
-                                <div class="text-sm font-medium">मानक शोध भाषा</div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-orange-700">HI · हिन्दी</div>
+                                <div class="text-xs font-medium mt-0.5">मानक शोध भाषा</div>
                             </div>
-                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </button>
 
-                        <button type="button" data-lang="sa" class="lang-pill flex items-center justify-between p-3 rounded border text-left transition-all border-borderline bg-surface text-ink hover:bg-slate-50">
+                        <!-- SA: Classical Ochre -->
+                        <button type="button" data-lang="sa"
+                            data-active-class="bg-[#b45309] text-white border-[#b45309] shadow-sm"
+                            data-inactive-class="bg-amber-50/70 text-slate-800 border-amber-200 hover:bg-amber-100/70"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-amber-50/70 text-slate-800 border-amber-200 hover:bg-amber-100/70">
                             <div>
-                                <div class="text-xs font-mono uppercase tracking-wider text-muted">SA · संस्कृतम्</div>
-                                <div class="text-sm font-medium">विद्वद्भाषा (Devanagari)</div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-amber-700">SA · संस्कृतम्</div>
+                                <div class="text-xs font-medium mt-0.5">विद्वद्भाषा शुद्धा (Deva)</div>
                             </div>
-                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </button>
 
-                        <button type="button" data-lang="de" class="lang-pill flex items-center justify-between p-3 rounded border text-left transition-all border-borderline bg-surface text-ink hover:bg-slate-50">
+                        <!-- DE: Prussian Pine / Forest -->
+                        <button type="button" data-lang="de"
+                            data-active-class="bg-[#065f46] text-white border-[#065f46] shadow-sm"
+                            data-inactive-class="bg-emerald-50/60 text-slate-800 border-emerald-200 hover:bg-emerald-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-emerald-50/60 text-slate-800 border-emerald-200 hover:bg-emerald-100/60">
                             <div>
-                                <div class="text-xs font-mono uppercase tracking-wider text-muted">DE · Deutsch</div>
-                                <div class="text-sm font-medium">Akademisches Deutsch</div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-emerald-700">DE · Deutsch</div>
+                                <div class="text-xs font-medium mt-0.5">Akademisches Deutsch</div>
                             </div>
-                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </button>
 
-                        <button type="button" data-lang="ru" class="lang-pill flex items-center justify-between p-3 rounded border text-left transition-all border-borderline bg-surface text-ink hover:bg-slate-50 sm:col-span-2">
+                        <!-- RU: Baltic Cobalt -->
+                        <button type="button" data-lang="ru"
+                            data-active-class="bg-[#1e40af] text-white border-[#1e40af] shadow-sm"
+                            data-inactive-class="bg-indigo-50/60 text-slate-800 border-indigo-200 hover:bg-indigo-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-indigo-50/60 text-slate-800 border-indigo-200 hover:bg-indigo-100/60 sm:col-span-2">
                             <div>
-                                <div class="text-xs font-mono uppercase tracking-wider text-muted">RU · Русский</div>
-                                <div class="text-sm font-medium">Академический русский</div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-indigo-700">RU · Русский</div>
+                                <div class="text-xs font-medium mt-0.5">Академический русский перевод</div>
                             </div>
-                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </button>
+
                     </div>
                 </div>
 
-                <!-- 2. DOCUMENT DROPZONE -->
+                <!-- 2. DOCUMENT DROPZONE (WITH VIBRANT FORMAT TAGS) -->
                 <div class="space-y-2">
-                    <label class="text-xs font-mono font-semibold uppercase tracking-wider text-ink block">
+                    <label class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-900 block">
                         Source Document Ingestion
                     </label>
 
-                    <div id="dropzone" class="relative border-2 border-dashed border-borderlineDark hover:border-ink rounded-lg p-8 text-center transition-all cursor-pointer bg-slate-50/50 hover:bg-slate-50 group">
+                    <div id="dropzone" class="relative border-2 border-dashed border-blue-300 hover:border-blue-600 rounded-xl p-8 text-center transition-all cursor-pointer bg-blue-50/30 hover:bg-blue-50/60 group">
                         <!-- Hidden native file input -->
                         {{ form.file(id="fileInput", class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10", accept=".pdf,.pptx,.ppt,.docx,.doc,.txt,.md") }}
 
                         <div class="flex flex-col items-center pointer-events-none">
-                            <div class="w-12 h-12 rounded-full bg-white border border-borderline flex items-center justify-center text-slate-700 mb-3 group-hover:scale-105 transition-transform shadow-xs">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 border border-blue-200 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform shadow-xs">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
                             </div>
-                            <p class="text-sm font-medium text-ink" id="fileTitlePrompt">Select or drag study file here</p>
-                            <p class="text-xs text-muted mt-1" id="fileSubtitlePrompt">Native parsing for slides, paragraphs, and tables</p>
+                            <p class="text-sm font-semibold text-slate-900" id="fileTitlePrompt">Select or drag study file here</p>
+                            <p class="text-xs text-slate-500 mt-1" id="fileSubtitlePrompt">Extracts paragraphs, slide content, and tables</p>
 
-                            <!-- Format badges -->
+                            <!-- Color-coded format badges -->
                             <div class="flex flex-wrap items-center justify-center gap-1.5 mt-4">
-                                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-white border border-borderline text-slate-700">PDF</span>
-                                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-white border border-borderline text-slate-700">PPTX</span>
-                                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-white border border-borderline text-slate-700">DOCX</span>
-                                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-white border border-borderline text-slate-700">TXT</span>
-                                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-white border border-borderline text-slate-700">MD</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-red-100 text-red-700 border border-red-200">PDF</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-amber-100 text-amber-800 border border-amber-200">PPTX</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-blue-100 text-blue-700 border border-blue-200">DOCX</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-teal-100 text-teal-700 border border-teal-200">TXT</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-indigo-100 text-indigo-700 border border-indigo-200">MD</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Selected file summary card (initially hidden) -->
-                    <div id="fileSelectedCard" class="hidden border border-borderline rounded p-3.5 bg-slate-50 flex items-center justify-between">
+                    <!-- Selected file summary card -->
+                    <div id="fileSelectedCard" class="hidden border border-emerald-300 rounded-lg p-3.5 bg-emerald-50/80 flex items-center justify-between">
                         <div class="flex items-center space-x-3 overflow-hidden">
-                            <div class="w-8 h-8 rounded bg-white border border-borderline flex items-center justify-center text-ink shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <div class="w-8 h-8 rounded-lg bg-emerald-200 text-emerald-900 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </div>
                             <div class="overflow-hidden">
-                                <p class="text-xs font-mono font-medium text-ink truncate" id="selectedFileName">filename.pdf</p>
-                                <p class="text-[11px] text-muted font-mono" id="selectedFileSize">0 KB</p>
+                                <p class="text-xs font-mono font-semibold text-emerald-950 truncate" id="selectedFileName">filename.pdf</p>
+                                <p class="text-[11px] text-emerald-700 font-mono" id="selectedFileSize">0 KB</p>
                             </div>
                         </div>
-                        <button type="button" id="clearFileBtn" class="text-muted hover:text-red-600 transition-colors p-1" title="Clear selection">
+                        <button type="button" id="clearFileBtn" class="text-emerald-700 hover:text-red-700 transition-colors p-1" title="Clear selection">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                     </div>
                 </div>
 
                 <!-- SUBMISSION & PROCESSING STATE -->
-                <div id="processingState" class="hidden p-4 rounded bg-slate-100 border border-borderline space-y-2">
-                    <div class="flex items-center justify-between text-xs font-mono text-ink">
-                        <span class="flex items-center gap-2">
-                            <svg class="w-4 h-4 animate-spin text-ink" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-                            <span>Synthesizing Corpus &amp; Generating Guide...</span>
+                <div id="processingState" class="hidden p-4 rounded-lg bg-amber-50 border border-amber-200 space-y-2">
+                    <div class="flex items-center justify-between text-xs font-mono text-amber-950">
+                        <span class="flex items-center gap-2 font-semibold">
+                            <svg class="w-4 h-4 animate-spin text-amber-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                            <span>Synthesizing Notes &amp; Exam Questions...</span>
                         </span>
-                        <span>Estimated: 15–30s</span>
+                        <span class="text-amber-800">15–30s</span>
                     </div>
-                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-ink h-full animate-pulse w-3/4"></div>
+                    <div class="w-full bg-amber-200 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-amber-600 h-full animate-pulse w-3/4"></div>
                     </div>
-                    <p class="text-[11px] text-muted">
-                        Parsing chunks, building in-memory ChromaDB vector store, and running Gemini 2.5 Flash.
+                    <p class="text-[11px] text-amber-800">
+                        Embedding chunks via MiniLM into ChromaDB vector store and generating structured material with Gemini 2.5 Flash.
                     </p>
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full h-11 rounded-full bg-ink hover:bg-slateboard text-white text-sm font-medium tracking-wide transition-colors flex items-center justify-center space-x-2">
+                <!-- PRIMARY CTA BUTTON (HIGH-CONTRAST TERRACOTTA) -->
+                <button type="submit" id="submitBtn" class="w-full h-12 rounded-xl bg-[#c2410c] hover:bg-[#9a3412] text-white text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow flex items-center justify-center space-x-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                    <span>Synthesize Study Guide &amp; Practice Questions</span>
+                    <span>Synthesize Study Notes &amp; Practice Questions</span>
                 </button>
             </form>
         </section>
 
-        <!-- RIGHT WORKSPACE COLUMN: CAPABILITIES & SYSTEM ARCHITECTURE -->
-        <section class="lg:col-span-6 space-y-6">
-            <div class="bg-surface border border-borderline rounded-lg p-6 lg:p-8 space-y-5">
-                <div class="border-b border-borderline pb-4">
-                    <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">Workspace Capabilities</span>
-                    <h2 class="font-serif text-xl font-medium tracking-tight text-ink mt-1">
-                        How RecallAI Translates &amp; Prepares Your Material
-                    </h2>
-                </div>
+        <!-- RIGHT WORKSPACE COLUMN: 3 COLORED CAPABILITY CARDS -->
+        <section class="lg:col-span-6 space-y-4">
+            
+            <div class="border-b border-slate-200 pb-3">
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold">Workspace Pipeline</span>
+                <h2 class="font-serif text-xl font-medium tracking-tight text-slate-900 mt-1">
+                    Three-Stage Learning &amp; Revision Engine
+                </h2>
+            </div>
 
-                <!-- 3 PIPELINE PHASES -->
-                <div class="space-y-4">
-                    <div class="flex items-start space-x-3.5">
-                        <div class="w-7 h-7 rounded bg-slate-100 text-ink font-mono text-xs font-semibold flex items-center justify-center shrink-0 border border-borderline mt-0.5">
+            <!-- CARD 1: CHAPTER STUDY NOTES (WARM OCHRE WASH) -->
+            <div class="bg-[#fffbeb] border border-[#fde68a] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-amber-200/80 text-amber-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
                             01
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-ink">Structured Chapter Study Notes</h3>
-                            <p class="text-xs text-muted leading-relaxed mt-0.5">
-                                Synthesizes key definitions, core concepts, formulas, and structural summaries translated directly into your target language.
-                            </p>
-                        </div>
+                        </span>
+                        <h3 class="text-sm font-semibold text-amber-950">Structured Chapter Notes</h3>
                     </div>
-
-                    <div class="flex items-start space-x-3.5">
-                        <div class="w-7 h-7 rounded bg-slate-100 text-ink font-mono text-xs font-semibold flex items-center justify-center shrink-0 border border-borderline mt-0.5">
-                            02
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-ink">10 Exam-Ready Practice Questions</h3>
-                            <p class="text-xs text-muted leading-relaxed mt-0.5">
-                                High-yield conceptual questions accompanied by collapsible answer keys and step-by-step explanatory rationales.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-3.5">
-                        <div class="w-7 h-7 rounded bg-slate-100 text-ink font-mono text-xs font-semibold flex items-center justify-center shrink-0 border border-borderline mt-0.5">
-                            03
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-ink">Grounded RAG Chat Console</h3>
-                            <p class="text-xs text-muted leading-relaxed mt-0.5">
-                                Ask any follow-up question. Answers are retrieved strictly from your uploaded document, preventing AI hallucinations.
-                            </p>
-                        </div>
-                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-amber-200/60 text-amber-900">
+                        Synthesized
+                    </span>
                 </div>
-            </div>
-
-            <!-- MULTILINGUAL COMPARATIVE MATRIX -->
-            <div class="bg-surface border border-borderline rounded-lg p-6 lg:p-8 space-y-4">
-                <div class="flex items-center justify-between border-b border-borderline pb-3">
-                    <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">Decoupled Language Fidelity</span>
-                    <span class="text-[11px] font-mono text-ochre font-semibold bg-ochreLight px-2 py-0.5 rounded border border-amber-200">Zero Transliteration</span>
-                </div>
-                <p class="text-xs text-muted leading-relaxed">
-                    Source document and target output language operate independently. For example, lecture slides in English can be studied in classical Sanskrit with authentic Devanagari grammar (vibhakti, sandhi, dhaturoopa).
+                <p class="text-xs text-amber-900/85 leading-relaxed pl-9">
+                    Extracts definitions, fundamental axioms, equations, and high-yield chapter summaries translated faithfully into your target study language.
                 </p>
+            </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2">
-                    <div class="border border-borderline rounded p-2.5 bg-slate-50/75">
-                        <div class="text-[10px] font-mono text-muted uppercase">Sanskrit Engine</div>
-                        <div class="text-xs font-medium text-ink mt-0.5 font-serif">विद्वद्भाषा शुद्धा</div>
-                        <div class="text-[10px] text-muted mt-0.5">No Hindi transliteration</div>
+            <!-- CARD 2: PRACTICE QUESTIONS (FOREST SAGE WASH) -->
+            <div class="bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-200/80 text-emerald-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                            02
+                        </span>
+                        <h3 class="text-sm font-semibold text-emerald-950">10 Practice Exam Questions</h3>
                     </div>
-                    <div class="border border-borderline rounded p-2.5 bg-slate-50/75">
-                        <div class="text-[10px] font-mono text-muted uppercase">German Engine</div>
-                        <div class="text-xs font-medium text-ink mt-0.5">Präzises Deutsch</div>
-                        <div class="text-[10px] text-muted mt-0.5">Strict academic cases</div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-emerald-200/60 text-emerald-900">
+                        Assessment
+                    </span>
+                </div>
+                <p class="text-xs text-emerald-900/85 leading-relaxed pl-9">
+                    Prepares 10 conceptual, exam-oriented questions accompanied by expandable answer keys and detailed reasoning in the target language.
+                </p>
+            </div>
+
+            <!-- CARD 3: GROUNDED RAG CHAT (AZURE BLUE WASH) -->
+            <div class="bg-[#eff6ff] border border-[#bfdbfe] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-blue-200/80 text-blue-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                            03
+                        </span>
+                        <h3 class="text-sm font-semibold text-blue-950">Grounded RAG Follow-Up Chat</h3>
                     </div>
-                    <div class="border border-borderline rounded p-2.5 bg-slate-50/75">
-                        <div class="text-[10px] font-mono text-muted uppercase">Hindi Engine</div>
-                        <div class="text-xs font-medium text-ink mt-0.5">मानक हिन्दी शब्दावली</div>
-                        <div class="text-[10px] text-muted mt-0.5">Natural scholarly tone</div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-blue-200/60 text-blue-900">
+                        Verified Context
+                    </span>
+                </div>
+                <p class="text-xs text-blue-900/85 leading-relaxed pl-9">
+                    Ask any question about the material in the interactive dock. Answers are retrieved directly from document vectors with zero hallucinations.
+                </p>
+            </div>
+
+            <!-- ARCHITECTURAL GUARANTEES (WARM SLATE WITH VIBRANT PILLS) -->
+            <div class="bg-white border border-slate-300/80 rounded-xl p-5 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold">Decoupled Cross-Lingual Pipeline</span>
+                    <span class="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Strict Grounding</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Upload German or English lecture slides and synthesize your entire study guide in classical Sanskrit or Hindi with strict orthographic accuracy.
+                </p>
+                <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                    <div class="p-2 rounded bg-amber-50/70 border border-amber-200">
+                        <span class="font-mono text-[10px] text-amber-800 font-semibold">SANSKRIT DEV-ENGINE</span>
+                        <p class="text-[11px] text-amber-950 font-serif mt-0.5">विद्वद्भाषा शुद्धा (No Hindi script leak)</p>
+                    </div>
+                    <div class="p-2 rounded bg-blue-50/70 border border-blue-200">
+                        <span class="font-mono text-[10px] text-blue-800 font-semibold">MMR RETRIEVAL</span>
+                        <p class="text-[11px] text-blue-950 mt-0.5">Maximal marginal relevance ranking</p>
                     </div>
                 </div>
             </div>
+
         </section>
 
     </main>
 
     <!-- STATUS BAR FOOTER -->
-    <footer class="w-full bg-surface border-t border-borderline px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-muted z-20 shrink-0">
+    <footer class="w-full bg-[#0f172a] border-t border-slate-800 px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-slate-400 z-20 shrink-0">
         <div class="flex items-center space-x-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-            <span>ChromaDB Vector Store: Active (In-Memory Ephemeral)</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>ChromaDB Vector Store: Active &amp; Isolated</span>
         </div>
         <div class="flex items-center space-x-4">
-            <span class="hidden sm:inline">PDF · PPTX · DOCX · TXT · MD Supported</span>
+            <span class="text-slate-400">PDF · PPTX · DOCX · TXT · MD</span>
             <span>© 2026 RecallAI</span>
         </div>
     </footer>
 
     <!-- INTERACTION SCRIPT -->
     <script>
-        // Language Selector Synchronization
         const nativeSelect = document.getElementById('target_language');
         const langButtons = document.querySelectorAll('.lang-pill');
 
         function updateSelectedLanguage(langCode) {
-            if (nativeSelect) {
-                nativeSelect.value = langCode;
-            }
+            if (nativeSelect) nativeSelect.value = langCode;
+
             langButtons.forEach(btn => {
                 const isSelected = btn.getAttribute('data-lang') === langCode;
                 const checkIcon = btn.querySelector('.check-icon');
+                const badge = btn.querySelector('.pill-badge');
+                const activeClasses = btn.getAttribute('data-active-class').split(' ');
+                const inactiveClasses = btn.getAttribute('data-inactive-class').split(' ');
+
                 if (isSelected) {
-                    btn.classList.remove('border-borderline', 'bg-surface', 'text-ink', 'hover:bg-slate-50');
-                    btn.classList.add('border-ink', 'bg-slate-900', 'text-white');
-                    btn.querySelector('.font-mono').classList.remove('text-muted');
-                    btn.querySelector('.font-mono').classList.add('text-slate-300');
+                    inactiveClasses.forEach(c => btn.classList.remove(c));
+                    activeClasses.forEach(c => btn.classList.add(c));
+                    if (badge) {
+                        badge.classList.remove('text-slate-500', 'text-orange-700', 'text-amber-700', 'text-emerald-700', 'text-indigo-700');
+                        badge.classList.add('text-white/80');
+                    }
                     if (checkIcon) checkIcon.classList.remove('hidden');
                 } else {
-                    btn.classList.remove('border-ink', 'bg-slate-900', 'text-white');
-                    btn.classList.add('border-borderline', 'bg-surface', 'text-ink', 'hover:bg-slate-50');
-                    btn.querySelector('.font-mono').classList.remove('text-slate-300');
-                    btn.querySelector('.font-mono').classList.add('text-muted');
+                    activeClasses.forEach(c => btn.classList.remove(c));
+                    inactiveClasses.forEach(c => btn.classList.add(c));
+                    if (badge) {
+                        badge.classList.remove('text-white/80');
+                        // Restore badge original tint
+                        const l = btn.getAttribute('data-lang');
+                        if (l === 'en') badge.classList.add('text-blue-700');
+                        if (l === 'hi') badge.classList.add('text-orange-700');
+                        if (l === 'sa') badge.classList.add('text-amber-700');
+                        if (l === 'de') badge.classList.add('text-emerald-700');
+                        if (l === 'ru') badge.classList.add('text-indigo-700');
+                    }
                     if (checkIcon) checkIcon.classList.add('hidden');
                 }
             });
@@ -364,12 +400,10 @@
             });
         });
 
-        // Initialize with default or current form value
         if (nativeSelect && nativeSelect.value) {
             updateSelectedLanguage(nativeSelect.value);
         }
 
-        // File Selection Handlers
         const fileInput = document.getElementById('fileInput');
         const dropzone = document.getElementById('dropzone');
         const fileSelectedCard = document.getElementById('fileSelectedCard');
@@ -400,21 +434,19 @@
             fileSelectedCard.classList.add('hidden');
         });
 
-        // Drag & drop visual cues
         ['dragenter', 'dragover'].forEach(name => {
             dropzone.addEventListener(name, (e) => {
                 e.preventDefault();
-                dropzone.classList.add('border-ink', 'bg-slate-100');
+                dropzone.classList.add('border-blue-600', 'bg-blue-100/50');
             });
         });
         ['dragleave', 'drop'].forEach(name => {
             dropzone.addEventListener(name, (e) => {
                 e.preventDefault();
-                dropzone.classList.remove('border-ink', 'bg-slate-100');
+                dropzone.classList.remove('border-blue-600', 'bg-blue-100/50');
             });
         });
 
-        // Form Submit Loading Feedback
         document.getElementById('uploadForm').addEventListener('submit', function() {
             const submitBtn = document.getElementById('submitBtn');
             const processingState = document.getElementById('processingState');

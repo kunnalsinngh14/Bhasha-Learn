@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecallAI — Study Guide &amp; Grounded Research Workspace</title>
+    <title>RecallAI — Study Guide &amp; Research Workspace</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,18 +13,15 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: '#0f172a',
-                        slateboard: '#1e293b',
-                        muted: '#64748b',
-                        subtle: '#94a3b8',
-                        canvas: '#f8fafc',
-                        surface: '#ffffff',
-                        borderline: '#e2e8f0',
-                        borderlineDark: '#cbd5e1',
-                        ochre: '#b45309',
-                        ochreLight: '#fef3c7',
-                        emeraldMuted: '#047857',
-                        emeraldLight: '#ecfdf5',
+                        navyDeep: '#0f172a',
+                        navyPanel: '#1e293b',
+                        warmSlate: '#f1f5f9',
+                        ochreBg: '#fffbeb',
+                        ochreBorder: '#fde68a',
+                        forestBg: '#f0fdf4',
+                        forestBorder: '#bbf7d0',
+                        azureBg: '#eff6ff',
+                        azureBorder: '#bfdbfe',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -37,38 +34,38 @@
     </script>
     <style>
         .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Academic Study Notes Typography & Elements */
+        /* Rich Academic Study Notes Typography & Colored Accents */
         .prose-academic h1 {
             font-family: 'Newsreader', serif;
             font-size: 2rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: -0.02em;
             color: #0f172a;
             margin-top: 0;
             margin-bottom: 1.5rem;
             padding-bottom: 0.75rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 2px solid #e2e8f0;
         }
         .prose-academic h2 {
             font-family: 'Newsreader', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
+            font-size: 1.45rem;
+            font-weight: 600;
             letter-spacing: -0.015em;
-            color: #0f172a;
+            color: #c2410c; /* Warm Terracotta section headers */
             margin-top: 2.25rem;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #fde68a;
         }
         .prose-academic h3 {
             font-family: 'Newsreader', serif;
             font-size: 1.25rem;
-            font-weight: 500;
-            color: #1e293b;
+            font-weight: 600;
+            color: #0f172a;
             margin-top: 1.75rem;
             margin-bottom: 0.75rem;
         }
@@ -93,14 +90,12 @@
             font-weight: 600;
         }
         .prose-academic blockquote {
-            border-left: 3px solid #0f172a;
-            padding-left: 1.25rem;
-            margin: 1.5rem 0;
-            color: #475569;
-            background: #f8fafc;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-            border-radius: 0 4px 4px 0;
+            border-left: 4px solid #d97706; /* Rich Amber Border */
+            background: #fffbeb; /* Warm Ochre Tint */
+            padding: 1rem 1.25rem;
+            margin: 1.75rem 0;
+            color: #78350f;
+            border-radius: 0 8px 8px 0;
             font-style: italic;
         }
         .prose-academic table {
@@ -110,12 +105,12 @@
             font-size: 0.875rem;
         }
         .prose-academic th, .prose-academic td {
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
             padding: 0.75rem 1rem;
             text-align: left;
         }
         .prose-academic th {
-            background: #f8fafc;
+            background: #e2e8f0;
             font-weight: 600;
             color: #0f172a;
             font-family: 'JetBrains Mono', monospace;
@@ -125,57 +120,58 @@
         }
         .prose-academic code {
             font-family: 'JetBrains Mono', monospace;
-            background: #f1f5f9;
-            color: #0f172a;
+            background: #eff6ff; /* Soft Azure */
+            color: #1d4ed8;
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-size: 0.85em;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #bfdbfe;
         }
         .prose-academic pre {
             background: #0f172a;
             color: #f8fafc;
             padding: 1.25rem;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow-x: auto;
             margin: 1.5rem 0;
+            border: 1px solid #334155;
         }
         .prose-academic pre code {
             background: transparent;
-            color: inherit;
+            color: #34d399; /* Vibrant emerald syntax highlight */
             padding: 0;
             border: none;
         }
         .prose-academic hr {
             border: none;
-            border-top: 1px dashed #cbd5e1;
+            border-top: 2px dashed #cbd5e1;
             margin: 2.5rem 0;
         }
     </style>
 </head>
-<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-warmSlate text-slate-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- TOP APP BAR -->
-    <header class="w-full bg-surface border-b border-borderline px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0 sticky top-0">
+    <!-- TOP NAVIGATION BAR (DEEP NAVY WITH AMBER ACCENTS) -->
+    <header class="w-full bg-[#0f172a] border-b border-slate-800 px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0 sticky top-0 text-white">
         <div class="flex items-center space-x-4">
-            <a href="/" class="flex items-center space-x-2 text-ink text-decoration-none">
-                <span class="font-serif text-2xl font-semibold tracking-tight text-ink">Recall<span class="font-sans font-light text-muted">/AI</span></span>
+            <a href="/" class="flex items-center space-x-2 text-white text-decoration-none">
+                <span class="font-serif text-2xl font-semibold tracking-tight text-white">Recall<span class="font-sans font-medium text-amber-400">/AI</span></span>
             </a>
-            <div class="h-4 w-px bg-borderline"></div>
+            <div class="h-4 w-px bg-slate-700"></div>
             <div class="flex items-center gap-2">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-borderline text-xs font-mono max-w-[220px] truncate" title="{{ filename or 'Study Material' }}">
-                    <svg class="w-3.5 h-3.5 text-slate-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-slate-200 border border-slate-700 text-xs font-mono max-w-[220px] truncate" title="{{ filename or 'Indexed Document' }}">
+                    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     <span class="truncate">{{ filename or "Indexed Document" }}</span>
                 </span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emeraldLight text-emeraldMuted border border-emerald-200">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-950 text-emerald-300 border border-emerald-700">
                     {{ target_language or "English" }}
                 </span>
             </div>
         </div>
 
         <div class="flex items-center space-x-3">
-            <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-borderline hover:border-ink bg-surface text-ink text-xs font-medium transition-colors">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-700 hover:border-slate-500 bg-slate-800 text-white text-xs font-medium transition-colors">
+                <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 <span>Upload New Material</span>
             </a>
         </div>
@@ -186,22 +182,39 @@
 
         <!-- LEFT COLUMN: STUDY GUIDE & 10 QUESTIONS -->
         <main class="lg:col-span-7 space-y-6">
-            <article class="bg-surface border border-borderline rounded-lg p-6 lg:p-10 shadow-xs">
+
+            <!-- 3 QUICK-VIEW COLOR PILL ANCHORS -->
+            <div class="grid grid-cols-3 gap-2.5">
+                <div class="p-3 rounded-lg bg-[#fffbeb] border border-[#fde68a] text-amber-900 flex items-center justify-between shadow-2xs">
+                    <span class="text-xs font-semibold">1. Chapter Notes</span>
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                </div>
+                <div class="p-3 rounded-lg bg-[#f0fdf4] border border-[#bbf7d0] text-emerald-900 flex items-center justify-between shadow-2xs">
+                    <span class="text-xs font-semibold">2. 10 Questions</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                </div>
+                <div class="p-3 rounded-lg bg-[#eff6ff] border border-[#bfdbfe] text-blue-900 flex items-center justify-between shadow-2xs">
+                    <span class="text-xs font-semibold">3. Grounded Chat</span>
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                </div>
+            </div>
+
+            <!-- ACADEMIC BROADSHEET CONTAINER -->
+            <article class="bg-white border border-slate-300 rounded-xl p-6 lg:p-10 shadow-sm">
                 <!-- Academic Header Banner -->
-                <div class="border-b border-borderline pb-5 mb-6">
-                    <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted mb-2">
+                <div class="border-b border-slate-200 pb-5 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">
                         <span>SYNTHESIZED STUDY GUIDE</span>
                         <span>/</span>
-                        <span class="text-ink font-semibold">LANGUAGE: {{ target_language | upper }}</span>
+                        <span class="text-slate-900 font-semibold">LANGUAGE: {{ target_language | upper }}</span>
                     </div>
-                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted font-mono pt-2">
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-500 font-mono pt-1">
                         <div class="flex items-center gap-1.5">
-                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <span>Session Active</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-slate-700">Strictly Grounded In Uploaded Source</span>
                         </div>
                         <div class="flex items-center gap-1.5">
-                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            <span>Grounded In Document</span>
+                            <span class="text-amber-700 font-semibold">Model: Gemini 2.5 Flash</span>
                         </div>
                     </div>
                 </div>
@@ -212,7 +225,7 @@
                         {{ summary | safe }}
                     </div>
                 {% else %}
-                    <div class="text-center py-12 text-muted text-sm font-mono">
+                    <div class="text-center py-12 text-slate-500 text-sm font-mono">
                         No study notes generated. Please return to the upload screen and upload a study document.
                     </div>
                 {% endif %}
@@ -221,53 +234,53 @@
 
         <!-- RIGHT COLUMN: GROUNDED RAG CHAT CONSOLE (STICKY DOCK) -->
         <aside class="lg:col-span-5 sticky top-24 space-y-4">
-            <div class="bg-surface border border-borderline rounded-lg shadow-xs overflow-hidden flex flex-col h-[calc(100vh-8.5rem)]">
+            <div class="bg-white border border-slate-300 rounded-xl shadow-sm overflow-hidden flex flex-col h-[calc(100vh-8.5rem)]">
                 
-                <!-- Chat Console Header -->
-                <div class="px-5 py-4 border-b border-borderline bg-slate-50 flex items-center justify-between">
+                <!-- Chat Console Header (Navy + Pulse) -->
+                <div class="px-5 py-4 border-b border-slate-800 bg-[#0f172a] text-white flex items-center justify-between">
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                            <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink">
-                                Grounded RAG Console
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-white">
+                                Grounded RAG Chat Console
                             </h2>
                         </div>
-                        <p class="text-[11px] text-muted mt-0.5">
-                            Answers verified against indexed document chunks
+                        <p class="text-[11px] text-slate-300 mt-0.5">
+                            Retrieves context directly from indexed document chunks
                         </p>
                     </div>
-                    <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-borderline">
+                    <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">
                         {{ target_language }}
                     </span>
                 </div>
 
                 <!-- Chat Messages Stream -->
-                <div id="chat-history" class="flex-1 p-5 overflow-y-auto space-y-4 custom-scroll text-sm">
+                <div id="chat-history" class="flex-1 p-5 overflow-y-auto space-y-4 custom-scroll text-sm bg-slate-50/50">
                     <!-- Initial AI Greeting Message -->
                     <div class="flex items-start space-x-2.5">
-                        <div class="w-6 h-6 rounded bg-ink text-white font-mono text-[10px] font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-7 h-7 rounded-lg bg-[#0f172a] text-amber-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                             AI
                         </div>
-                        <div class="flex-1 bg-slate-50 border border-borderline rounded p-3 text-xs leading-relaxed text-slate-800">
+                        <div class="flex-1 bg-white border border-slate-200 rounded-lg p-3.5 text-xs leading-relaxed text-slate-800 shadow-2xs">
                             {{ chat_greeting or "Chapter study notes and 10 practice questions have been prepared above. Enter any follow-up question here to search the document context." }}
                         </div>
                     </div>
                 </div>
 
                 <!-- Query Input Form -->
-                <div class="p-4 border-t border-borderline bg-surface">
+                <div class="p-4 border-t border-slate-200 bg-white">
                     <form id="chat-form" class="space-y-2">
                         <div class="relative">
                             <input type="text" id="query-input" placeholder="Query document context (e.g. explain formula, clarify rule)..." autocomplete="off" required
-                                class="w-full h-10 pl-3 pr-20 rounded bg-white border border-borderlineDark text-ink placeholder-subtle text-xs focus:border-ink focus:ring-0 transition-colors">
-                            <button type="submit" class="absolute right-1 top-1 h-8 px-3 rounded-full bg-ink hover:bg-slateboard text-white text-xs font-medium transition-colors flex items-center gap-1">
+                                class="w-full h-11 pl-3 pr-24 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-xs focus:border-[#1d4ed8] focus:ring-1 focus:ring-[#1d4ed8] transition-colors">
+                            <button type="submit" class="absolute right-1.5 top-1.5 h-8 px-4 rounded-lg bg-[#c2410c] hover:bg-[#9a3412] text-white text-xs font-semibold transition-colors flex items-center gap-1 shadow-xs">
                                 <span>Ask</span>
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </button>
                         </div>
-                        <div class="flex items-center justify-between text-[10px] font-mono text-muted px-1">
-                            <span>Target: {{ target_language }}</span>
-                            <span>Exact Retrieval Only</span>
+                        <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 px-1">
+                            <span>Output: {{ target_language }}</span>
+                            <span class="text-emerald-700 font-semibold">Grounded RAG Mode</span>
                         </div>
                     </form>
                 </div>
@@ -278,10 +291,10 @@
     </div>
 
     <!-- STATUS BAR FOOTER -->
-    <footer class="w-full bg-surface border-t border-borderline px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-muted z-20 shrink-0">
+    <footer class="w-full bg-[#0f172a] border-t border-slate-800 px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-slate-400 z-20 shrink-0">
         <div class="flex items-center space-x-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-            <span>Document Ingestion Vectorized · ChromaDB MMR Retrieval Active</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>ChromaDB MMR Vector Search Active · In-Memory Ephemeral Storage</span>
         </div>
         <div>
             <span>© 2026 RecallAI</span>
@@ -299,12 +312,12 @@
             const query = queryInput.value.trim();
             if (!query) return;
 
-            // Append User Question
+            // Append User Question in Vibrant Cobalt
             const userMsg = document.createElement('div');
             userMsg.className = 'flex items-start justify-end space-x-2.5';
             userMsg.innerHTML = `
-                <div class="max-w-[85%] bg-slate-900 text-white rounded p-3 text-xs leading-relaxed">
-                    <div class="text-[10px] font-mono text-slate-400 mb-1">YOU</div>
+                <div class="max-w-[85%] bg-[#1d4ed8] text-white rounded-lg p-3 text-xs leading-relaxed shadow-xs">
+                    <div class="text-[10px] font-mono text-blue-200 mb-0.5 font-semibold">YOU</div>
                     <div>${escapeHtml(query)}</div>
                 </div>
             `;
@@ -318,12 +331,12 @@
             loadingMsg.className = 'flex items-start space-x-2.5';
             loadingMsg.id = loadingId;
             loadingMsg.innerHTML = `
-                <div class="w-6 h-6 rounded bg-ink text-white font-mono text-[10px] font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-7 h-7 rounded-lg bg-[#0f172a] text-amber-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                     AI
                 </div>
-                <div class="flex-1 bg-slate-50 border border-borderline rounded p-3 text-xs text-muted flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 animate-spin text-ink shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-                    <span>Searching vector store &amp; synthesizing answer...</span>
+                <div class="flex-1 bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-500 flex items-center gap-2 shadow-2xs">
+                    <svg class="w-3.5 h-3.5 animate-spin text-[#c2410c] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                    <span>Searching document chunks &amp; synthesizing answer...</span>
                 </div>
             `;
             chatHistory.appendChild(loadingMsg);
@@ -343,13 +356,16 @@
 
                 if (targetLoading) {
                     targetLoading.innerHTML = `
-                        <div class="w-6 h-6 rounded bg-ink text-white font-mono text-[10px] font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-7 h-7 rounded-lg bg-[#0f172a] text-amber-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                             AI
                         </div>
-                        <div class="flex-1 bg-white border border-borderline rounded p-3 text-xs leading-relaxed text-slate-800 space-y-2">
-                            <div class="flex items-center justify-between text-[10px] font-mono text-muted border-b border-slate-100 pb-1.5 mb-1.5">
-                                <span class="text-emerald-700 font-semibold">Grounded Response</span>
-                                <span>Output: {{ target_language }}</span>
+                        <div class="flex-1 bg-white border border-slate-200 rounded-lg p-3.5 text-xs leading-relaxed text-slate-800 space-y-2 shadow-2xs">
+                            <div class="flex items-center justify-between text-[10px] font-mono border-b border-slate-100 pb-1.5 mb-1.5">
+                                <span class="text-emerald-700 font-semibold inline-flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Grounded Response
+                                </span>
+                                <span class="text-slate-500">Output: {{ target_language }}</span>
                             </div>
                             <div class="prose-chat">
                                 ${responseHtml}
@@ -361,10 +377,10 @@
                 const targetLoading = document.getElementById(loadingId);
                 if (targetLoading) {
                     targetLoading.innerHTML = `
-                        <div class="w-6 h-6 rounded bg-red-600 text-white font-mono text-[10px] font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                        <div class="w-7 h-7 rounded-lg bg-red-600 text-white font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                             !
                         </div>
-                        <div class="flex-1 bg-red-50 border border-red-200 text-red-800 rounded p-3 text-xs">
+                        <div class="flex-1 bg-red-50 border border-red-200 text-red-800 rounded-lg p-3 text-xs">
                             Error communicating with the retrieval engine. Please try again.
                         </div>
                     `;

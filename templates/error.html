@@ -13,13 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: '#0f172a',
-                        slateboard: '#1e293b',
-                        muted: '#64748b',
-                        subtle: '#94a3b8',
-                        canvas: '#f8fafc',
-                        surface: '#ffffff',
-                        borderline: '#e2e8f0',
+                        navyDeep: '#0f172a',
+                        warmSlate: '#f1f5f9',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -31,50 +26,50 @@
         }
     </script>
 </head>
-<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-warmSlate text-slate-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION BAR -->
-    <header class="w-full bg-surface border-b border-borderline px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0">
-        <a href="/" class="flex items-center space-x-3 text-ink text-decoration-none">
-            <span class="font-serif text-2xl font-semibold tracking-tight text-ink">Recall<span class="font-sans font-light text-muted">/AI</span></span>
+    <!-- TOP NAVIGATION BAR (DEEP NAVY) -->
+    <header class="w-full bg-[#0f172a] border-b border-slate-800 px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0 text-white">
+        <a href="/" class="flex items-center space-x-3 text-white text-decoration-none">
+            <span class="font-serif text-2xl font-semibold tracking-tight text-white">Recall<span class="font-sans font-medium text-amber-400">/AI</span></span>
         </a>
-        <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-borderline hover:border-ink bg-surface text-ink text-xs font-medium transition-colors">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-700 hover:border-slate-500 bg-slate-800 text-white text-xs font-medium transition-colors">
+            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             <span>Return to Workspace</span>
         </a>
     </header>
 
-    <!-- DIAGNOSTIC CONTAINER (NOT A FLOATING CENTERED BOX) -->
+    <!-- DIAGNOSTIC CONTAINER -->
     <main class="flex-1 max-w-3xl w-full mx-auto p-6 lg:p-12 space-y-6">
-        <div class="bg-surface border border-borderline rounded-lg p-8 lg:p-10 space-y-6 shadow-xs">
+        <div class="bg-white border border-slate-300 rounded-xl p-8 lg:p-10 space-y-6 shadow-sm">
             
-            <div class="flex items-center gap-3 border-b border-borderline pb-5">
-                <div class="w-10 h-10 rounded bg-red-50 border border-red-200 text-red-700 flex items-center justify-center shrink-0">
+            <div class="flex items-center gap-3.5 border-b border-slate-200 pb-5">
+                <div class="w-10 h-10 rounded-lg bg-red-100 border border-red-200 text-red-700 flex items-center justify-center shrink-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 </div>
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">Diagnostic Report</span>
-                    <h1 class="font-serif text-xl font-medium tracking-tight text-ink">
+                    <span class="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">Diagnostic Report</span>
+                    <h1 class="font-serif text-xl font-medium tracking-tight text-slate-900">
                         Execution Notice
                     </h1>
                 </div>
             </div>
 
-            <div class="bg-slate-50 border border-borderline rounded p-4 text-xs font-mono text-slate-800 leading-relaxed break-words">
+            <div class="bg-red-50/70 border border-red-200 rounded-lg p-4 text-xs font-mono text-red-900 leading-relaxed break-words">
                 {{ message }}
             </div>
 
-            <div class="space-y-2 text-xs text-muted">
-                <p class="font-semibold text-ink">Suggested Remediation:</p>
+            <div class="space-y-2 text-xs text-slate-600">
+                <p class="font-semibold text-slate-900">Suggested Remediation:</p>
                 <ul class="list-disc list-inside space-y-1 pl-1">
                     <li>Verify that the uploaded document contains readable text layers rather than scanned bitmaps.</li>
-                    <li>If uploading legacy PowerPoint (.ppt) or Word (.doc) files, convert to modern (.pptx/.docx) or .pdf.</li>
-                    <li>Confirm that your API key is correctly configured and has active quota.</li>
+                    <li>If uploading legacy PowerPoint (.ppt) or Word (.doc) files, save as modern (.pptx/.docx) or .pdf.</li>
+                    <li>Confirm that your API key is correctly configured with active quota.</li>
                 </ul>
             </div>
 
-            <div class="pt-4 border-t border-borderline flex items-center gap-3">
-                <a href="/" class="h-10 px-5 rounded-full bg-ink hover:bg-slateboard text-white text-xs font-medium inline-flex items-center gap-2 transition-colors">
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-3">
+                <a href="/" class="h-10 px-5 rounded-lg bg-[#c2410c] hover:bg-[#9a3412] text-white text-xs font-semibold inline-flex items-center gap-2 transition-colors shadow-xs">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     <span>Retry Ingestion</span>
                 </a>
@@ -84,7 +79,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full bg-surface border-t border-borderline px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-muted z-20 shrink-0">
+    <footer class="w-full bg-[#0f172a] border-t border-slate-800 px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-slate-400 z-20 shrink-0">
         <div>RecallAI Diagnostic Log</div>
         <div>© 2026 RecallAI</div>
     </footer>
