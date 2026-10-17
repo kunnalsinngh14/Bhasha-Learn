@@ -55,7 +55,6 @@ def get_llm():
         _cached_llm_config = current_config
     return _llm
 
-
 def get_embeddings():
     """Lazily load HuggingFace embeddings on first use."""
     global _embeddings
@@ -308,7 +307,7 @@ def _format_user_error(exc: Exception, default_message: str) -> str:
     err_lower = err_str.lower()
 
     if "gemini_api_key is missing" in err_lower or "api_key is missing" in err_lower:
-        return "Gemini API key is missing. Please add your GEMINI_API_KEY to the .env file in the RecallAI folder."
+        return "Gemini API key is missing. Please add your GEMINI_API_KEY to the .env file in the BhashaLearn folder."
     if "api_key_invalid" in err_lower or "invalid api key" in err_lower or "unauthorized" in err_lower or "permission_denied" in err_lower:
         return "Gemini API authentication failed (Invalid API Key). Please verify your GEMINI_API_KEY in the .env file."
     if "429" in err_str or "rate limit" in err_lower or "resource_exhausted" in err_lower or "quota" in err_lower:
@@ -379,16 +378,18 @@ def home_page():
             })
             response = get_llm().invoke(prompt)
             result_html = markdown.markdown(response.content, extensions=["tables", "fenced_code"])
-
         except Exception as exc:
             logger.exception("Error during study generation: %s", exc)
             return render_template("error.html", message=_format_user_error(exc, language_details["error_generation"]))
+
+        session["uploaded_filename"] = filename
 
         return render_template(
             "result.html",
             summary=result_html,
             target_language=language_details["name"],
             chat_greeting=language_details["chat_greeting"],
+            filename=filename,
         )
 
     return render_template("index.html", form=form)

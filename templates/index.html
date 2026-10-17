@@ -1,226 +1,453 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revision Room - Upload</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #F8FAFC;
-            --surface-color: #FFFFFF;
-            --primary: #0EA5E9; /* Light Blue */
-            --primary-hover: #0284C7;
-            --accent: #10B981; /* Light Green */
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --border-color: #E2E8F0;
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    <title>BhashaLearn — Multilingual Study &amp; Research Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyDeep: '#0f172a',
+                        navyPanel: '#1e293b',
+                        warmSlate: '#f1f5f9',
+                        ochrePrimary: '#b45309',
+                        ochreBg: '#fffbeb',
+                        ochreBorder: '#fde68a',
+                        terracottaPrimary: '#c2410c',
+                        terracottaHover: '#9a3412',
+                        forestPrimary: '#065f46',
+                        forestBg: '#f0fdf4',
+                        forestBorder: '#bbf7d0',
+                        azurePrimary: '#1d4ed8',
+                        azureBg: '#eff6ff',
+                        azureBorder: '#bfdbfe',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Subtle grid background for modern feel */
-            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 3.5rem;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            animation: floatUp 0.6s ease-out forwards;
-        }
-
-        @keyframes floatUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 0.5rem;
-        }
-
-        .brand-icon {
-            font-size: 2rem;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--text-main);
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1.05rem;
-            margin-top: 0.5rem;
-        }
-
-        .upload-area {
-            position: relative;
-            border: 2px dashed var(--primary);
-            border-radius: 16px;
-            padding: 3.5rem 2rem;
-            transition: var(--transition);
-            cursor: pointer;
-            margin-bottom: 2rem;
-            background: rgba(14, 165, 233, 0.03);
-        }
-
-        .upload-area:hover {
-            background: rgba(14, 165, 233, 0.08);
-            transform: scale(1.02);
-            border-color: var(--accent);
-        }
-
-        input[type="file"] {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .upload-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border: none;
-            padding: 1.1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            width: 100%;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .error-message {
-            color: #EF4444;
-            background: #FEF2F2;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            list-style: none;
-            border-left: 4px solid #EF4444;
-            text-align: left;
-        }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-warmSlate text-slate-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <div class="container">
-        <div class="brand">
-            <div class="brand-icon">🧠</div>
-            <h1>RecallAI</h1>
+    <!-- TOP NAVIGATION BAR (DEEP NAVY WITH AMBER ACCENTS) -->
+    <header class="w-full bg-[#0f172a] border-b border-slate-800 px-6 lg:px-10 h-16 flex items-center justify-between z-20 shrink-0 text-white">
+        <div class="flex items-center space-x-6">
+            <a href="/" class="flex items-center space-x-3 text-white text-decoration-none">
+                <span class="font-serif text-2xl font-semibold tracking-tight text-white">Bhasha<span class="font-sans font-medium text-amber-400">Learn</span></span>
+            </a>
+            <span class="hidden sm:inline text-xs font-medium text-slate-300 border-l border-slate-700 pl-4">
+                Multilingual Study &amp; Exam Preparation Assistant
+            </span>
         </div>
-        <p class="subtitle">Upload study material (PDF, PPT, DOCX, TXT, MD) &amp; choose your output language.</p>
-
-        <!-- Visual callout: Document language ≠ Output language -->
-        <div style="display:flex; gap:0.75rem; margin-bottom:2rem; text-align:left;">
-            <div style="flex:1; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:1rem;">
-                <div style="font-size:1.3rem; margin-bottom:0.3rem;">📁</div>
-                <div style="font-weight:600; color:#1E40AF; font-size:0.9rem;">Document Language</div>
-                <div style="color:#3B82F6; font-size:0.82rem;">Any language or format — doesn't affect output</div>
+        <div class="flex items-center space-x-4">
+            <div class="hidden lg:flex items-center space-x-2 text-xs font-mono">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-950/80 text-blue-300 border border-blue-700/60">
+                    <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                    <span>5 Languages Supported</span>
+                </span>
             </div>
-            <div style="display:flex; align-items:center; color:#94A3B8; font-size:1.2rem; font-weight:700;">→</div>
-            <div style="flex:1; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:1rem;">
-                <div style="font-size:1.3rem; margin-bottom:0.3rem;">🌐</div>
-                <div style="font-weight:600; color:#166534; font-size:0.9rem;">Output Language</div>
-                <div style="color:#16A34A; font-size:0.82rem;">You choose — controls all AI responses</div>
-            </div>
+            <div class="h-4 w-px bg-slate-700"></div>
+            <span class="text-xs font-mono text-slate-300">v4.2</span>
         </div>
+    </header>
 
-        <form action="/" method="POST" enctype="multipart/form-data" id="uploadForm">
-            {{ form.hidden_tag() }}
+    <!-- MAIN TWO-COLUMN WORKSPACE -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-            <div style="text-align: left; margin-bottom: 1.5rem;">
-                <label for="target_language" style="display: block; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">
-                    🌐 Output Language
-                </label>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
-                    All notes, questions, explanations, and chat responses will be generated in this language — regardless of the document's original language.
+        <!-- LEFT WORKSPACE COLUMN: INGESTION & CONFIGURATION -->
+        <section class="lg:col-span-6 bg-white border border-slate-300/80 rounded-xl p-6 lg:p-8 space-y-6 shadow-sm">
+            <div class="border-b border-slate-200 pb-4">
+                <h1 class="font-serif text-2xl lg:text-3xl font-medium tracking-tight text-slate-900 mt-1">
+                    Study Material Ingestion
+                </h1>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Upload documents in any language. The AI pipeline analyzes source chunks and synthesizes notes and questions in your chosen target language.
                 </p>
-                {{ form.target_language(class="form-control", id="target_language", style="width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--surface-color); color: var(--text-main); font-size: 1rem;") }}
             </div>
 
-            {% if form.target_language.errors %}
-                <ul class="error-message">
-                {% for error in form.target_language.errors %}
-                    <li>⚠ {{ error }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-            
-            <div style="text-align: left; margin-bottom: 0.5rem;">
-                <label style="display: block; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem;">
-                    📁 Upload Study Material
-                </label>
-            </div>
-            <div class="upload-area">
-                <div class="upload-icon">📁</div>
-                <h3 style="color: var(--text-main); margin-bottom: 0.5rem;" id="fileName">Drag &amp; Drop or Click</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Supports PDF, PPTX, DOCX, TXT, MD</p>
-                {{ form.file(class="form-control", id="fileInput", accept=".pdf,.pptx,.ppt,.docx,.doc,.txt,.md", onchange="document.getElementById('fileName').innerText = this.files[0] ? this.files[0].name : 'Drag & Drop or Click'") }}
-            </div>
-            
-            {% if form.file.errors %}
-                <ul class="error-message">
-                {% for error in form.file.errors %}
-                    <li>⚠ {{ error }}</li>
-                {% endfor %}
-                </ul>
+            <!-- FORM ERROR ALERT -->
+            {% if form.errors %}
+                <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded text-sm text-red-800 space-y-1">
+                    <div class="font-semibold flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <span>Please resolve the following:</span>
+                    </div>
+                    <ul class="list-disc list-inside text-xs space-y-1 pl-2">
+                        {% for field, errors in form.errors.items() %}
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
             {% endif %}
 
-            <div id="loading" style="display: none; color: var(--accent); margin-bottom: 1rem; font-weight: 600;">
-                ⏳ Analysing your document, preparing study notes &amp; generating practice questions — this may take 20–40 seconds…
-            </div>
-            
-            <button type="submit" class="submit-btn" id="submitBtn"
-                onclick="this.disabled=true; this.innerText='Generating Notes &amp; Questions…'; document.getElementById('loading').style.display='block'; this.closest('form').submit();">
-                Generate Study Notes &amp; Questions
-            </button>
-        </form>
-    </div>
+            <form action="/" method="POST" enctype="multipart/form-data" id="uploadForm" class="space-y-6">
+                {{ form.hidden_tag() }}
 
+                <!-- 1. TARGET SYNTHESIS LANGUAGE SELECTOR (WITH RICH DISTINCT COLORS) -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label for="target_language" class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-900">
+                            Target Synthesis Language
+                        </label>
+                        <span class="text-xs text-slate-500">Decoupled from source language</span>
+                    </div>
+
+                    <!-- Hidden native select for form submission -->
+                    <div class="hidden">
+                        {{ form.target_language(id="target_language") }}
+                    </div>
+
+                    <!-- Interactive Colorful Language Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="langSelectorGrid">
+                        
+                        <!-- EN: Deep Navy -->
+                        <button type="button" data-lang="en" 
+                            data-active-class="bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-sm"
+                            data-inactive-class="bg-blue-50/60 text-slate-800 border-blue-200 hover:bg-blue-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-sm">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-blue-200">EN · English</div>
+                                <div class="text-xs font-medium mt-0.5">Standard Academic</div>
+                            </div>
+                            <svg class="check-icon w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+
+                        <!-- HI: Warm Terracotta -->
+                        <button type="button" data-lang="hi"
+                            data-active-class="bg-[#c2410c] text-white border-[#c2410c] shadow-sm"
+                            data-inactive-class="bg-orange-50/60 text-slate-800 border-orange-200 hover:bg-orange-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-orange-50/60 text-slate-800 border-orange-200 hover:bg-orange-100/60">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-orange-700">HI · हिन्दी</div>
+                                <div class="text-xs font-medium mt-0.5">मानक शोध भाषा</div>
+                            </div>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+
+                        <!-- SA: Classical Ochre -->
+                        <button type="button" data-lang="sa"
+                            data-active-class="bg-[#b45309] text-white border-[#b45309] shadow-sm"
+                            data-inactive-class="bg-amber-50/70 text-slate-800 border-amber-200 hover:bg-amber-100/70"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-amber-50/70 text-slate-800 border-amber-200 hover:bg-amber-100/70">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-amber-700">SA · संस्कृतम्</div>
+                                <div class="text-xs font-medium mt-0.5">विद्वद्भाषा शुद्धा (Deva)</div>
+                            </div>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+
+                        <!-- DE: Prussian Pine / Forest -->
+                        <button type="button" data-lang="de"
+                            data-active-class="bg-[#065f46] text-white border-[#065f46] shadow-sm"
+                            data-inactive-class="bg-emerald-50/60 text-slate-800 border-emerald-200 hover:bg-emerald-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-emerald-50/60 text-slate-800 border-emerald-200 hover:bg-emerald-100/60">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-emerald-700">DE · Deutsch</div>
+                                <div class="text-xs font-medium mt-0.5">Akademisches Deutsch</div>
+                            </div>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+
+                        <!-- RU: Baltic Cobalt -->
+                        <button type="button" data-lang="ru"
+                            data-active-class="bg-[#1e40af] text-white border-[#1e40af] shadow-sm"
+                            data-inactive-class="bg-indigo-50/60 text-slate-800 border-indigo-200 hover:bg-indigo-100/60"
+                            class="lang-pill flex items-center justify-between p-3 rounded-lg border text-left transition-all bg-indigo-50/60 text-slate-800 border-indigo-200 hover:bg-indigo-100/60 sm:col-span-2">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase tracking-wider font-semibold pill-badge text-indigo-700">RU · Русский</div>
+                                <div class="text-xs font-medium mt-0.5">Академический русский перевод</div>
+                            </div>
+                            <svg class="check-icon w-4 h-4 text-white hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- 2. DOCUMENT DROPZONE (WITH VIBRANT FORMAT TAGS) -->
+                <div class="space-y-2">
+                    <label class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-900 block">
+                        Source Document Ingestion
+                    </label>
+
+                    <div id="dropzone" class="relative border-2 border-dashed border-blue-300 hover:border-blue-600 rounded-xl p-8 text-center transition-all cursor-pointer bg-blue-50/30 hover:bg-blue-50/60 group">
+                        <!-- Hidden native file input -->
+                        {{ form.file(id="fileInput", class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10", accept=".pdf,.pptx,.ppt,.docx,.doc,.txt,.md") }}
+
+                        <div class="flex flex-col items-center pointer-events-none">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 border border-blue-200 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform shadow-xs">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                            </div>
+                            <p class="text-sm font-semibold text-slate-900" id="fileTitlePrompt">Select or drag study file here</p>
+                            <p class="text-xs text-slate-500 mt-1" id="fileSubtitlePrompt">Extracts paragraphs, slide content, and tables</p>
+
+                            <!-- Color-coded format badges -->
+                            <div class="flex flex-wrap items-center justify-center gap-1.5 mt-4">
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-red-100 text-red-700 border border-red-200">PDF</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-amber-100 text-amber-800 border border-amber-200">PPTX</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-blue-100 text-blue-700 border border-blue-200">DOCX</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-teal-100 text-teal-700 border border-teal-200">TXT</span>
+                                <span class="px-2 py-0.5 text-[11px] font-mono font-medium rounded bg-indigo-100 text-indigo-700 border border-indigo-200">MD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selected file summary card -->
+                    <div id="fileSelectedCard" class="hidden border border-emerald-300 rounded-lg p-3.5 bg-emerald-50/80 flex items-center justify-between">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-200 text-emerald-900 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs font-mono font-semibold text-emerald-950 truncate" id="selectedFileName">filename.pdf</p>
+                                <p class="text-[11px] text-emerald-700 font-mono" id="selectedFileSize">0 KB</p>
+                            </div>
+                        </div>
+                        <button type="button" id="clearFileBtn" class="text-emerald-700 hover:text-red-700 transition-colors p-1" title="Clear selection">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUBMISSION & PROCESSING STATE -->
+                <div id="processingState" class="hidden p-4 rounded-lg bg-amber-50 border border-amber-200 space-y-2">
+                    <div class="flex items-center justify-between text-xs font-mono text-amber-950">
+                        <span class="flex items-center gap-2 font-semibold">
+                            <svg class="w-4 h-4 animate-spin text-amber-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                            <span>Synthesizing Notes &amp; Exam Questions...</span>
+                        </span>
+                        <span class="text-amber-800">15–30s</span>
+                    </div>
+                    <div class="w-full bg-amber-200 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-amber-600 h-full animate-pulse w-3/4"></div>
+                    </div>
+                    <p class="text-[11px] text-amber-800">
+                        Embedding chunks via MiniLM into ChromaDB vector store and generating structured material with Gemini 2.5 Flash.
+                    </p>
+                </div>
+
+                <!-- PRIMARY CTA BUTTON (HIGH-CONTRAST TERRACOTTA) -->
+                <button type="submit" id="submitBtn" class="w-full h-12 rounded-xl bg-[#c2410c] hover:bg-[#9a3412] text-white text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow flex items-center justify-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>Synthesize Study Notes &amp; Practice Questions</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- RIGHT WORKSPACE COLUMN: 3 COLORED CAPABILITY CARDS -->
+        <section class="lg:col-span-6 space-y-4">
+            
+            <div class="border-b border-slate-200 pb-3">
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold">Workspace Pipeline</span>
+                <h2 class="font-serif text-xl font-medium tracking-tight text-slate-900 mt-1">
+                    Three-Stage Learning &amp; Revision Engine
+                </h2>
+            </div>
+
+            <!-- CARD 1: CHAPTER STUDY NOTES (WARM OCHRE WASH) -->
+            <div class="bg-[#fffbeb] border border-[#fde68a] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-amber-200/80 text-amber-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                            01
+                        </span>
+                        <h3 class="text-sm font-semibold text-amber-950">Structured Chapter Notes</h3>
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-amber-200/60 text-amber-900">
+                        Synthesized
+                    </span>
+                </div>
+                <p class="text-xs text-amber-900/85 leading-relaxed pl-9">
+                    Extracts definitions, fundamental axioms, equations, and high-yield chapter summaries translated faithfully into your target study language.
+                </p>
+            </div>
+
+            <!-- CARD 2: PRACTICE QUESTIONS (FOREST SAGE WASH) -->
+            <div class="bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-200/80 text-emerald-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                            02
+                        </span>
+                        <h3 class="text-sm font-semibold text-emerald-950">10 Practice Exam Questions</h3>
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-emerald-200/60 text-emerald-900">
+                        Assessment
+                    </span>
+                </div>
+                <p class="text-xs text-emerald-900/85 leading-relaxed pl-9">
+                    Prepares 10 conceptual, exam-oriented questions accompanied by expandable answer keys and detailed reasoning in the target language.
+                </p>
+            </div>
+
+            <!-- CARD 3: GROUNDED RAG CHAT (AZURE BLUE WASH) -->
+            <div class="bg-[#eff6ff] border border-[#bfdbfe] rounded-xl p-5 shadow-xs transition-all hover:shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-blue-200/80 text-blue-900 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                            03
+                        </span>
+                        <h3 class="text-sm font-semibold text-blue-950">Grounded RAG Follow-Up Chat</h3>
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-blue-200/60 text-blue-900">
+                        Verified Context
+                    </span>
+                </div>
+                <p class="text-xs text-blue-900/85 leading-relaxed pl-9">
+                    Ask any question about the material in the interactive dock. Answers are retrieved directly from document vectors with zero hallucinations.
+                </p>
+            </div>
+
+            <!-- ARCHITECTURAL GUARANTEES (WARM SLATE WITH VIBRANT PILLS) -->
+            <div class="bg-white border border-slate-300/80 rounded-xl p-5 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-slate-700 font-semibold">Decoupled Cross-Lingual Pipeline</span>
+                    <span class="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Strict Grounding</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Upload German or English lecture slides and synthesize your entire study guide in classical Sanskrit or Hindi with strict orthographic accuracy.
+                </p>
+                <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                    <div class="p-2 rounded bg-amber-50/70 border border-amber-200">
+                        <span class="font-mono text-[10px] text-amber-800 font-semibold">SANSKRIT DEV-ENGINE</span>
+                        <p class="text-[11px] text-amber-950 font-serif mt-0.5">विद्वद्भाषा शुद्धा (No Hindi script leak)</p>
+                    </div>
+                    <div class="p-2 rounded bg-blue-50/70 border border-blue-200">
+                        <span class="font-mono text-[10px] text-blue-800 font-semibold">MMR RETRIEVAL</span>
+                        <p class="text-[11px] text-blue-950 mt-0.5">Maximal marginal relevance ranking</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- STATUS BAR FOOTER -->
+    <footer class="w-full bg-[#0f172a] border-t border-slate-800 px-6 lg:px-10 h-10 flex items-center justify-between text-xs text-slate-400 z-20 shrink-0">
+        <div class="flex items-center space-x-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>ChromaDB Semantic Search Active</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span class="text-slate-400">PDF · PPTX · DOCX · TXT · MD</span>
+            <span>© 2026 BhashaLearn</span>
+        </div>
+    </footer>
+
+    <!-- INTERACTION SCRIPT -->
+    <script>
+        const nativeSelect = document.getElementById('target_language');
+        const langButtons = document.querySelectorAll('.lang-pill');
+
+        function updateSelectedLanguage(langCode) {
+            if (nativeSelect) nativeSelect.value = langCode;
+
+            langButtons.forEach(btn => {
+                const isSelected = btn.getAttribute('data-lang') === langCode;
+                const checkIcon = btn.querySelector('.check-icon');
+                const badge = btn.querySelector('.pill-badge');
+                const activeClasses = btn.getAttribute('data-active-class').split(' ');
+                const inactiveClasses = btn.getAttribute('data-inactive-class').split(' ');
+
+                if (isSelected) {
+                    inactiveClasses.forEach(c => btn.classList.remove(c));
+                    activeClasses.forEach(c => btn.classList.add(c));
+                    if (badge) {
+                        badge.classList.remove('text-slate-500', 'text-orange-700', 'text-amber-700', 'text-emerald-700', 'text-indigo-700');
+                        badge.classList.add('text-white/80');
+                    }
+                    if (checkIcon) checkIcon.classList.remove('hidden');
+                } else {
+                    activeClasses.forEach(c => btn.classList.remove(c));
+                    inactiveClasses.forEach(c => btn.classList.add(c));
+                    if (badge) {
+                        badge.classList.remove('text-white/80');
+                        // Restore badge original tint
+                        const l = btn.getAttribute('data-lang');
+                        if (l === 'en') badge.classList.add('text-blue-700');
+                        if (l === 'hi') badge.classList.add('text-orange-700');
+                        if (l === 'sa') badge.classList.add('text-amber-700');
+                        if (l === 'de') badge.classList.add('text-emerald-700');
+                        if (l === 'ru') badge.classList.add('text-indigo-700');
+                    }
+                    if (checkIcon) checkIcon.classList.add('hidden');
+                }
+            });
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateSelectedLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        if (nativeSelect && nativeSelect.value) {
+            updateSelectedLanguage(nativeSelect.value);
+        }
+
+        const fileInput = document.getElementById('fileInput');
+        const dropzone = document.getElementById('dropzone');
+        const fileSelectedCard = document.getElementById('fileSelectedCard');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const selectedFileSize = document.getElementById('selectedFileSize');
+        const clearFileBtn = document.getElementById('clearFileBtn');
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                selectedFileName.textContent = file.name;
+                selectedFileSize.textContent = formatBytes(file.size);
+                fileSelectedCard.classList.remove('hidden');
+            }
+        });
+
+        clearFileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            fileInput.value = '';
+            fileSelectedCard.classList.add('hidden');
+        });
+
+        ['dragenter', 'dragover'].forEach(name => {
+            dropzone.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropzone.classList.add('border-blue-600', 'bg-blue-100/50');
+            });
+        });
+        ['dragleave', 'drop'].forEach(name => {
+            dropzone.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-blue-600', 'bg-blue-100/50');
+            });
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            const processingState = document.getElementById('processingState');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            processingState.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
