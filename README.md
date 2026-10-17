@@ -1,4 +1,4 @@
-# 🧠 RecallAI — Multilingual Study & Revision Assistant
+# BhashaLearn — Multilingual Study & Revision Assistant
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
@@ -13,7 +13,7 @@
 
 ## 📌 Overview
 
-**RecallAI** is an AI-powered, multilingual study and revision assistant engineered to break language barriers in education. Whether you are revising a complex research paper, lecture slides, or textbook chapters, RecallAI allows you to upload study material in **any document format and language**, and seamlessly transforms it into structured study notes, practice exam questions, and an interactive RAG chatbot — **all in your chosen target language**.
+**BhashaLearn** is an AI-powered, multilingual study and revision assistant engineered to break language barriers in education. Whether you are revising a complex research paper, lecture slides, or textbook chapters, BhashaLearn allows you to upload study material in **any document format and language**, and seamlessly transforms it into structured study notes, practice exam questions, and an interactive RAG chatbot — **all in your chosen target language**.
 
 > 💡 **Input and output languages are completely independent.**  
 > *Upload a German research paper → Study in Hindi.*  
@@ -24,7 +24,7 @@
 
 ## 🌐 The Multilingual Focus
 
-Students and researchers frequently face a dual hurdle: grasping complex technical content while deciphering materials published in non-native languages. RecallAI bridges this gap through a high-fidelity cross-lingual retrieval-augmented generation (RAG) architecture.
+Students and researchers frequently face a dual hurdle: grasping complex technical content while deciphering materials published in non-native languages. BhashaLearn bridges this gap through a high-fidelity cross-lingual retrieval-augmented generation (RAG) architecture.
 
 ```mermaid
 flowchart TD
@@ -52,7 +52,7 @@ flowchart TD
 | `ru` | **Russian** | Русский | Cyrillic | Idiomatic academic Russian with rigorous technical declension.<br>_Fallback: "Я не смог найти ответ в документе."_ |
 
 ### 3. Dedicated Classical Sanskrit Engine
-Unlike standard translation tools that produce Romanized phonetic output or Hindi sentences with Sanskrit suffixes, RecallAI enforces authentic classical Sanskrit composition:
+Unlike standard translation tools that produce Romanized phonetic output or Hindi sentences with Sanskrit suffixes, BhashaLearn enforces authentic classical Sanskrit composition:
 - Employs appropriate case inflections (*vibhakti*) and verbal conjugations (*dhaturoopa*).
 - Retains authentic scholarly Sanskrit prose (*saralam kintu shuddham samskritam*).
 
@@ -88,7 +88,7 @@ Unlike standard translation tools that produce Romanized phonetic output or Hind
 ## 📁 Repository Structure
 
 ```text
-RecallAI/
+BhashaLearn/
 ├── templates/
 │   ├── index.html            # Landing & multi-format upload with language selection
 │   ├── result.html           # Structured notes, practice questions & RAG chat UI
@@ -111,8 +111,8 @@ RecallAI/
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/RecallAI.git
-cd RecallAI
+git clone https://github.com/yourusername/BhashaLearn.git
+cd BhashaLearn
 ```
 
 ### 3. Create and Activate Virtual Environment

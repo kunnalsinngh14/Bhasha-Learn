@@ -308,7 +308,7 @@ def _format_user_error(exc: Exception, default_message: str) -> str:
     err_lower = err_str.lower()
 
     if "gemini_api_key is missing" in err_lower or "api_key is missing" in err_lower:
-        return "Gemini API key is missing. Please add your GEMINI_API_KEY to the .env file in the RecallAI folder."
+        return "Gemini API key is missing. Please add your GEMINI_API_KEY to the .env file in the BhashaLearn folder."
     if "api_key_invalid" in err_lower or "invalid api key" in err_lower or "unauthorized" in err_lower or "permission_denied" in err_lower:
         return "Gemini API authentication failed (Invalid API Key). Please verify your GEMINI_API_KEY in the .env file."
     if "429" in err_str or "rate limit" in err_lower or "resource_exhausted" in err_lower or "quota" in err_lower:
